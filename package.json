@@ -9,6 +9,7 @@
     "lint": "next lint",
     "lint:fix": "npm run lint -- --fix",
     "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "typecheck": "tsc",
     "prepare": "husky"
   },
   "dependencies": {
