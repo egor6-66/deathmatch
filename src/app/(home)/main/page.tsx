@@ -20,12 +20,12 @@ function MainPage() {
         console.log(a);
     }
 
-    // if (1 == 2) {
-    //     console.log('wd');
-    // }
+    if (1 == 2) {
+        console.log('wd');
+    }
 
     wws('fsdd');
-    console.log('wda');
+    console.log('wdda');
 
     return (
         <section className={styles.mainPage}>
