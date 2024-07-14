@@ -52,7 +52,7 @@
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "lint-staged": {
-    "*.{ts|tsx}": [
+    "**/*.{js,jsx,ts,tsx}": [
       "npm run lint:fix",
       "git add"
     ],
