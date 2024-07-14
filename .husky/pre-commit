@@ -1,1 +1,2 @@
 npm run stylelint:fix
+npm run lint:fix
