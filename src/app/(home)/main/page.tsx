@@ -16,7 +16,7 @@ function MainPage() {
         { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => motion.set({ initial: { x: 900 }, exit: { x: -900 } }) },
     ];
 
-    console.log('wddwdaawd');
+    console.log('wddwdawdawd');
 
     return (
         <section className={styles.mainPage}>
