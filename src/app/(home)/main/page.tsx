@@ -16,6 +16,12 @@ function MainPage() {
         { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => motion.set({ initial: { x: 900 }, exit: { x: -900 } }) },
     ];
 
+    function wws(a: number) {
+        console.log(a);
+    }
+
+    wws('fs');
+
     return (
         <section className={styles.mainPage}>
             <NavMenu items={menuItems} className={styles.menu} />
