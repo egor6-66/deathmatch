@@ -1,0 +1,13 @@
+@use '@/css/mixins';
+
+.createServer {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.bcImage("https://813a9746-5e51-4b1a-af22-34e7e233e254.selstorage.ru/background/blood/1.webp", right);
+  position: relative;
+
+  .menu {
+    position: absolute;
+    bottom: 50px;
+    left: 50px;
+  }
+}

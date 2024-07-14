@@ -1,0 +1,7 @@
+
+html[data-theme="blood"] {
+    --primary: #f5222d;
+    --secondary: #820014;
+    --text-primary: #fafafa;
+    --text-secondary: #8c8c8c;
+}
