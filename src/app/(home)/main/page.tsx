@@ -24,7 +24,7 @@ function MainPage() {
     //     console.log('wd');
     // }
 
-    wws('fsd');
+    wws('fsdd');
     console.log('wda');
 
     return (

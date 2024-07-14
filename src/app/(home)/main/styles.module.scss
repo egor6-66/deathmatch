@@ -1,10 +1,10 @@
 @use '@/css/mixins';
 
 .mainPage {
+
+  position: relative;
   @include mixins.bcImage("https://813a9746-5e51-4b1a-af22-34e7e233e254.selstorage.ru/background/blood/3.webp", right);
   @include mixins.box-size(100%, 100%);
-  position: relative;
-
   .menu {
     position: absolute;
     bottom: 50px;
