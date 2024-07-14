@@ -8,7 +8,8 @@
     "bundle-analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint",
     "lint:fix": "npm run lint -- --fix",
-    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix"
+    "stylelint:fix": "stylelint '**/*{.css,.scss}' --fix",
+    "prepare": "husky"
   },
   "dependencies": {
     "@tanstack/react-query": "^5.51.1",
@@ -56,7 +57,13 @@
     }
   },
   "lint-staged": {
-    "*.(ts|tsx)": ["npm run lint:fix", "git add"],
-    "*.(css|scss)": ["npm run stylelint:fix", "git add"]
+    "*.(ts|tsx)": [
+      "npm run lint:fix",
+      "git add"
+    ],
+    "*.(css|scss)": [
+      "npm run stylelint:fix",
+      "git add"
+    ]
   }
 }
