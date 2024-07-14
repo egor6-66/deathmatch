@@ -52,12 +52,8 @@
     "webpack-bundle-analyzer": "^4.10.2"
   },
   "lint-staged": {
-    "*.{ts|tsx}": [
+    "src/*.(ts|tsx)": [
       "npm run lint:fix",
-      "git add"
-    ],
-    "*.{css|scss}": [
-      "npm run stylelint:fix",
       "git add"
     ]
   }
