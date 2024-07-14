@@ -19,13 +19,13 @@ function MainPage() {
     function wws(a: number) {
         console.log(a);
     }
-
+    //
     // if (1 == 2) {
     //     console.log('wd');
     // }
-
-    wws('fsddduik');
-    console.log('wdda');
+    //
+    // wws('fsdddui k');
+    // console.log('wdda');
 
     return (
         <section className={styles.mainPage}>
