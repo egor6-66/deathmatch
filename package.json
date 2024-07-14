@@ -56,11 +56,7 @@
     }
   },
   "lint-staged": {
-    "*.{ts, tsx}": [
-      "npm run lint:fix"
-    ],
-    "*.{css, module.scss}": [
-      "npm run stylelint:fix"
-    ]
+    "*.(ts|tsx)": ["npm run lint:fix", "git add"],
+    "*.(css|scss)": ["npm run stylelint:fix", "git add"]
   }
 }
