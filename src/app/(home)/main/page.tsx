@@ -21,6 +21,7 @@ function MainPage() {
     }
 
     wws('fs');
+    console.log('wda');
 
     return (
         <section className={styles.mainPage}>
