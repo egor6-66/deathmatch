@@ -59,7 +59,7 @@
     "*.{ts, tsx}": [
       "npm run lint:fix"
     ],
-    "*.{css, scss}": [
+    "*.{css, module.scss}": [
       "npm run stylelint:fix"
     ]
   }
