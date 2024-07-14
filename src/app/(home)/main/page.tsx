@@ -20,11 +20,11 @@ function MainPage() {
         console.log(a);
     }
 
-    if (1 == 2) {
-        console.log('wd');
-    }
+    // if (1 == 2) {
+    //     console.log('wd');
+    // }
 
-    wws('fsdddik');
+    wws('fsddduik');
     console.log('wdda');
 
     return (

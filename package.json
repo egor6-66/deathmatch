@@ -50,11 +50,5 @@
     "stylelint-scss": "^6.4.1",
     "typescript": "^5",
     "webpack-bundle-analyzer": "^4.10.2"
-  },
-  "lint-staged": {
-    "src/*.(ts|tsx)": [
-      "npm run lint:fix",
-      "git add"
-    ]
   }
 }
