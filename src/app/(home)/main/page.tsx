@@ -16,16 +16,15 @@ function MainPage() {
         { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => motion.set({ initial: { x: 900 }, exit: { x: -900 } }) },
     ];
 
-    function wws(a: number) {
-        console.log(a);
+    if (1 == 2) {
+        console.log('wdd');
     }
-    //
-    // if (1 == 2) {
-    //     console.log('wd');
-    // }
-    //
-    // wws('fsdddui k');
-    // console.log('wdda');
+
+    function aa(b: string) {
+        console.log('dw');
+    }
+
+    aa(33);
 
     return (
         <section className={styles.mainPage}>
