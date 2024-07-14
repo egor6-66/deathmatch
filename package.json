@@ -51,17 +51,12 @@
     "typescript": "^5",
     "webpack-bundle-analyzer": "^4.10.2"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
-  },
   "lint-staged": {
-    "*.(ts|tsx)": [
+    "*.{ts|tsx}": [
       "npm run lint:fix",
       "git add"
     ],
-    "*.(css|scss)": [
+    "*.{css|scss}": [
       "npm run stylelint:fix",
       "git add"
     ]
