@@ -1,0 +1,16 @@
+@use '@/css/mixins';
+
+.navMenu {
+  @include mixins.box-neon;
+  gap: 18px;
+  padding: 24px 44px;
+  font-weight: 700;
+}
+
+.row {
+  @include mixins.flex;
+}
+
+.column {
+  @include mixins.flex-column;
+}
