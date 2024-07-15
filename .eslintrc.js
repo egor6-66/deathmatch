@@ -65,9 +65,10 @@ module.exports = {
         '@typescript-eslint/no-unused-vars': 0,
         'react-hooks/rules-of-hooks': 0,
         'sonarjs/no-identical-expressions': 0,
+        '@typescript-eslint/no-explicit-any': 0,
+        '@typescript-eslint/ban-ts-comment': 0,
         'padding-line-between-statements': [
             'warn',
-
             { blankLine: 'always', prev: '*', next: 'block' },
             { blankLine: 'always', prev: 'block', next: '*' },
             { blankLine: 'always', prev: '*', next: 'block-like' },

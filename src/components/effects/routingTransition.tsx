@@ -28,7 +28,13 @@ function RoutingTransitionEffect(props: Props) {
 
     return (
         <AnimatePresence mode="popLayout" initial={false}>
-            <motion.div key={key} {...motionVariant} style={{ width: '100%', height: '100%' }} transition={{ duration: 0.7 }} suppressHydrationWarning>
+            <motion.div
+                key={key}
+                {...motionVariant}
+                style={{ width: '100%', height: '100%' }}
+                transition={{ duration: 0.5, ease: 'easeIn' }}
+                suppressHydrationWarning
+            >
                 <FrozenRouter>{children}</FrozenRouter>
             </motion.div>
         </AnimatePresence>

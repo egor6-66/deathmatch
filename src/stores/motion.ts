@@ -26,10 +26,6 @@ const motionStore = useZustand<Store, Methods>({
             },
         }),
     },
-    forStorage: {
-        all: true,
-        storageName: 'test',
-    },
 });
 
 export type MotionStoreTypes = StoreTypes<typeof motionStore.use>;

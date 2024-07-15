@@ -6,7 +6,8 @@ export const home = {
 };
 
 export const customization = {
-    WEAPON: `${home.OPTIONS}/weapon`,
-    CHARACTER: `${home.OPTIONS}/character`,
+    BASIC: `${home.OPTIONS}/basic`,
     CONTROL: `${home.OPTIONS}/control`,
+    CHARACTER: `${home.OPTIONS}/character`,
+    WEAPON: `${home.OPTIONS}/weapon`,
 };

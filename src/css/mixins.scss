@@ -2,7 +2,7 @@
   height: $height;
   width: $width;
 }
-@mixin flex($justify: center,  $align: center) {
+@mixin flex($justify: flex-start,  $align: flex-start) {
   display: flex;
   flex-direction: row;
   align-items: $align;
@@ -17,10 +17,12 @@
   border-radius: var(--border-radius);
   box-shadow: 0 0 0 2px var(--primary), inset 0 0 0 2px var(--primary), 0 0 20px 4px var(--primary), inset 0 0 20px 4px var(--primary);
 }
-@mixin text-neon($direction: column,  $align: flex-start, $gap: 0) {
+@mixin text-neon() {
+  text-align: center;
   color: var(--text-primary);
   text-shadow: 0 0 7px var(--primary), 0 0 10px var(--primary), 0 0 21px var(--primary), 0 0 42px var(--primary), 0 0 82px var(--primary), 0 0 92px var(--primary), 0 0 102px var(--primary), 0 0 151px var(--primary);
 }
+
 @mixin bcImage($url, $position: center){
   background-image: url($url);
   background-repeat:no-repeat;

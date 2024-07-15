@@ -1,3 +1,5 @@
+import appStore from '@/stores/app';
+
 import motionStore from './motion';
 
-export { motionStore };
+export { appStore, motionStore };

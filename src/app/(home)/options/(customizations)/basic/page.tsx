@@ -1,13 +1,13 @@
 'use client';
 
-import { NavMenu, NavMenuTypes } from '@/components/ui-kit';
+import { NavMenu, NavMenuTypes, Title } from '@/components/ui-kit';
 import { paths } from '@/constants';
 import { useWindowSizeObserver } from '@/hooks';
 import { motionStore } from '@/stores';
 
 import styles from './styles.module.scss';
 
-function CharacterPage() {
+function BasicPage() {
     const homePagesMotion = motionStore.use.homePagesMotion();
 
     const { height } = useWindowSizeObserver({
@@ -19,10 +19,11 @@ function CharacterPage() {
     ];
 
     return (
-        <section className={styles.optionsPage}>
+        <section className={styles.BasicPage}>
+            <Title blink>ОСНОВНЫЕ НАСТРОЙКИ</Title>
             <NavMenu items={menuItems} className={styles.menu} />
         </section>
     );
 }
 
-export default CharacterPage;
+export default BasicPage;

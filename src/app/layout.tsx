@@ -21,7 +21,7 @@ const ns = Noto_Sans({
 
 export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
     return (
-        <html lang="en" data-theme="blood">
+        <html lang="en" data-theme={'blood'}>
             <body className={ns.className}>
                 <QueryClientProvider>{children}</QueryClientProvider>
             </body>
