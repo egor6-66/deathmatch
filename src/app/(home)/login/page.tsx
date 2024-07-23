@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
 import LoginView from '@/app/(home)/login/view';
-import { paths } from '@/constants';
+import { paths } from '@/shared/constants';
 
 import { coords, navigationStore } from '../utils';
 

@@ -1,21 +1,18 @@
 'use client';
 
-import { NavMenu, NavMenuTypes, Title } from '@/components/ui-kit';
-import { paths } from '@/constants';
-import { useWindowSizeObserver } from '@/hooks';
-import { motionStore } from '@/stores';
+import { NavMenu, NavMenuTypes, Title } from '@/shared/ui';
+
+import { useWindowSizeObserver } from '../../../../../shared/hooks';
 
 import styles from './styles.module.scss';
 
 const BasicPage = () => {
-    const homePagesMotion = motionStore.use.homePagesMotion();
-
     const { height } = useWindowSizeObserver({
         debounceDelay: 1000,
     });
 
     const menuItems: NavMenuTypes.IItem[] = [
-        { id: 0, title: 'Назад', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { y: height }, exit: { y: -height } }) },
+        // { id: 0, title: 'Назад', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { y: height }, exit: { y: -height } }) },
     ];
 
     return (

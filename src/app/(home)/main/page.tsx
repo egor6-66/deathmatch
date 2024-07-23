@@ -1,27 +1,25 @@
 'use client';
 
-import { NavMenu, NavMenuTypes } from '@/components/ui-kit';
-import { paths } from '@/constants';
-import { useWindowSizeObserver } from '@/hooks';
-import { motionStore } from '@/stores';
+import { paths } from '@/shared/constants';
+import { NavMenu, NavMenuTypes } from '@/shared/ui';
+
+import { useWindowSizeObserver } from '../../../shared/hooks';
 
 import styles from './styles.module.scss';
 
 const MainPage = () => {
-    const homePagesMotion = motionStore.use.homePagesMotion();
-
     const { height, width } = useWindowSizeObserver({
         debounceDelay: 1000,
     });
 
     const serverCoords = () => {
-        homePagesMotion.setCoord({ initial: { y: -height }, exit: { y: height } });
+        // homePagesMotion.setCoord({ initial: { y: -height }, exit: { y: height } });
     };
 
     const menuItems: NavMenuTypes.IItem[] = [
-        { id: 0, title: 'Создать сервер', path: paths.game.BATTLEFIELD, onMouseEnter: serverCoords },
-        // { id: 1, title: 'Найти сервер', path: paths.home.FIND_SERVER, onMouseEnter: serverCoords },
-        { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { x: width }, exit: { x: -width } }) },
+        // { id: 0, title: 'Создать сервер', path: paths.game.BATTLEFIELD, onMouseEnter: serverCoords },
+        // // { id: 1, title: 'Найти сервер', path: paths.home.FIND_SERVER, onMouseEnter: serverCoords },
+        // { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { x: width }, exit: { x: -width } }) },
     ];
 
     return (

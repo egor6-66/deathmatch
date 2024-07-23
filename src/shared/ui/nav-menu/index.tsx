@@ -2,7 +2,7 @@
 
 import classNames from 'classnames';
 
-import { Link } from '@/components/ui-kit';
+import Link from '../link';
 
 import * as NavMenuTypes from './interface';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Button } from '@/components/ui-kit';
+import { Button } from '@/shared/ui';
 
 import styles from './styles.module.scss';
 

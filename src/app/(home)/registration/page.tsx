@@ -3,7 +3,7 @@
 import { useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 
-import { paths } from '@/constants';
+import { paths } from '@/shared/constants';
 
 import { coords, navigationStore } from '../utils';
 

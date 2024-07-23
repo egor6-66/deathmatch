@@ -1,9 +1,9 @@
 import React, { CSSProperties, useEffect, useRef } from 'react';
 import { Camera, Color4, CubeTexture, Engine, HemisphericLight, Scene, SceneLoader, UniversalCamera, Vector3 } from '@babylonjs/core';
 
-import { useUpdateEffect } from '@/hooks';
-
 import '@babylonjs/loaders';
+
+import { useUpdateEffect } from '../../../shared/hooks';
 
 import navigationStore from './store';
 
