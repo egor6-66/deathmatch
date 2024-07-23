@@ -1,0 +1,7 @@
+@use '@/css/mixins';
+
+.input {
+  @include mixins.box-neon;
+  padding: 12px;
+  color: #fafafa;
+}

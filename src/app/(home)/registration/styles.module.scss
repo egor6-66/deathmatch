@@ -6,7 +6,7 @@
   background-color: inherit;
 
   .form {
-    @include mixins.flex-column(center, center, 12);
+    @include mixins.flex-column(center, center, 22px);
     @include mixins.box-size(98%, 98%);
     @include mixins.box-max-size(400px, 500px);
     @include mixins.box-neon;
