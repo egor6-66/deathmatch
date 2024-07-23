@@ -7,14 +7,14 @@ import { motionStore } from '@/stores';
 
 import styles from './styles.module.scss';
 
-function CharacterPage() {
+const CharacterPage = () => {
     const homePagesMotion = motionStore.use.homePagesMotion();
 
     const { height } = useWindowSizeObserver({
         debounceDelay: 1000,
     });
 
-    const menuItems: NavMenuTypes.Item[] = [
+    const menuItems: NavMenuTypes.IItem[] = [
         { id: 0, title: 'Назад', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { y: height }, exit: { y: -height } }) },
     ];
 
@@ -23,6 +23,6 @@ function CharacterPage() {
             <NavMenu items={menuItems} className={styles.menu} />
         </section>
     );
-}
+};
 
 export default CharacterPage;

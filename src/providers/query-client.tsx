@@ -3,7 +3,7 @@
 import React, { PropsWithChildren } from 'react';
 import * as ReactQuery from '@tanstack/react-query';
 
-function QueryClientProvider({ children }: PropsWithChildren) {
+const QueryClientProvider = ({ children }: PropsWithChildren) => {
     const queryClient = new ReactQuery.QueryClient({
         defaultOptions: {
             queries: {
@@ -13,6 +13,6 @@ function QueryClientProvider({ children }: PropsWithChildren) {
     });
 
     return <ReactQuery.QueryClientProvider client={queryClient}>{children}</ReactQuery.QueryClientProvider>;
-}
+};
 
 export default QueryClientProvider;

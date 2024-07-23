@@ -3,20 +3,16 @@
 import classNames from 'classnames';
 
 import { Link } from '@/components/ui-kit';
-import { useAudio } from '@/hooks';
 
 import * as NavMenuTypes from './interface';
 
 import styles from './styles.module.scss';
 
-function NavMenu(props: NavMenuTypes.Props) {
+const NavMenu = (props: NavMenuTypes.IProps) => {
     const { items, className, direction = 'column', ...rest } = props;
-
-    const { play } = useAudio('https://813a9746-5e51-4b1a-af22-34e7e233e254.selstorage.ru/sounds/app/menu-hover.mp3');
 
     const onMouseEnter = (cb?: () => void) => {
         cb && cb();
-        play();
     };
 
     return (
@@ -28,7 +24,7 @@ function NavMenu(props: NavMenuTypes.Props) {
             ))}
         </menu>
     );
-}
+};
 
 export type { NavMenuTypes };
 

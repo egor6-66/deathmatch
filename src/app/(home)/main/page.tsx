@@ -7,7 +7,7 @@ import { motionStore } from '@/stores';
 
 import styles from './styles.module.scss';
 
-function MainPage() {
+const MainPage = () => {
     const homePagesMotion = motionStore.use.homePagesMotion();
 
     const { height, width } = useWindowSizeObserver({
@@ -18,9 +18,9 @@ function MainPage() {
         homePagesMotion.setCoord({ initial: { y: -height }, exit: { y: height } });
     };
 
-    const menuItems: NavMenuTypes.Item[] = [
-        { id: 0, title: 'Создать сервер', path: paths.home.CREATE_SERVER, onMouseEnter: serverCoords },
-        { id: 1, title: 'Найти сервер', path: paths.home.FIND_SERVER, onMouseEnter: serverCoords },
+    const menuItems: NavMenuTypes.IItem[] = [
+        { id: 0, title: 'Создать сервер', path: paths.game.BATTLEFIELD, onMouseEnter: serverCoords },
+        // { id: 1, title: 'Найти сервер', path: paths.home.FIND_SERVER, onMouseEnter: serverCoords },
         { id: 2, title: 'Настройки', path: paths.home.OPTIONS, onMouseEnter: () => homePagesMotion.setCoord({ initial: { x: width }, exit: { x: -width } }) },
     ];
 
@@ -29,6 +29,6 @@ function MainPage() {
             <NavMenu items={menuItems} className={styles.menu} />
         </section>
     );
-}
+};
 
 export default MainPage;

@@ -1,5 +1,5 @@
 import { LinkProps } from 'next/link';
 
-export interface Props extends LinkProps {
+export interface IProps extends LinkProps {
     children: string;
 }

@@ -2,8 +2,6 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
-import { QueryClientProvider } from '@/providers';
-
 import '@/css/index.css';
 
 export const metadata: Metadata = {
@@ -19,12 +17,14 @@ const ns = Noto_Sans({
     style: ['normal'],
 });
 
-export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
+const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
     return (
         <html lang="en" data-theme={'blood'}>
-            <body className={ns.className}>
-                <QueryClientProvider>{children}</QueryClientProvider>
+            <body className={ns.className} suppressHydrationWarning>
+                {children}
             </body>
         </html>
     );
-}
+};
+
+export default RootLayout;

@@ -1,7 +1,8 @@
 export const home = {
     MAIN: '/main',
-    CREATE_SERVER: '/create-server',
-    FIND_SERVER: '/find-server',
+    LOGIN: '/login',
+    REGISTRATION: '/registration',
+    SERVER: '/server',
     OPTIONS: '/options',
 };
 
@@ -10,4 +11,8 @@ export const customization = {
     CONTROL: `${home.OPTIONS}/control`,
     CHARACTER: `${home.OPTIONS}/character`,
     WEAPON: `${home.OPTIONS}/weapon`,
+};
+
+export const game = {
+    BATTLEFIELD: `/battlefield`,
 };

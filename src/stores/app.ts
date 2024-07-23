@@ -1,17 +1,16 @@
 import useZustand, { StoreTypes } from 'react-use-zustand';
-import { MotionProps } from 'framer-motion';
 
-type Store = {
+interface IStore {
     theme: Theme;
-};
+}
 
-type Methods = {
+interface IMethods {
     theme: {
         change: (theme: Theme) => void;
     };
-};
+}
 
-const appStore = useZustand<Store, Methods>({
+const appStore = useZustand<IStore, IMethods>({
     keys: ['theme'],
     default: {
         theme: 'dark',

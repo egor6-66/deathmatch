@@ -1,3 +1,7 @@
-.button {
+@use '@/css/mixins';
 
+.button {
+  @include mixins.box-neon;
+  padding: 12px;
+  color: #fafafa;
 }

@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "start": "next dev",
+    "dev": "next dev",
     "build": "next build",
     "bundle-analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint",
@@ -13,12 +13,17 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@babylonjs/core": "^7.15.1",
+    "@babylonjs/gui": "^7.15.2",
+    "@babylonjs/loaders": "^7.15.1",
     "@tanstack/react-query": "^5.51.1",
+    "ammojs-typed": "^1.0.6",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^11.3.2",
     "next": "14.2.5",
+    "or": "^0.2.0",
     "react": "^18",
     "react-dom": "^18",
     "react-screen-hooks": "^0.0.12",

@@ -2,14 +2,19 @@
   height: $height;
   width: $width;
 }
-@mixin flex($justify: flex-start,  $align: flex-start) {
+@mixin box-max-size($width, $height: $width) {
+  max-height: $height;
+  max-width: $width;
+}
+@mixin flex($justify: flex-start,  $align: flex-start, $gap: 0) {
   display: flex;
   flex-direction: row;
   align-items: $align;
   justify-content: $justify;
+  gap: $gap;
 }
-@mixin flex-column($justify: flex-start,  $align: flex-start) {
-  @include flex($justify, $align);
+@mixin flex-column($justify: flex-start,  $align: flex-start, $gap: 0) {
+  @include flex($justify, $align, $gap);
   flex-direction: column;
 }
 @mixin box-neon() {
@@ -22,7 +27,6 @@
   color: var(--text-primary);
   text-shadow: 0 0 7px var(--primary), 0 0 10px var(--primary), 0 0 21px var(--primary), 0 0 42px var(--primary), 0 0 82px var(--primary), 0 0 92px var(--primary), 0 0 102px var(--primary), 0 0 151px var(--primary);
 }
-
 @mixin bcImage($url, $position: center){
   background-image: url($url);
   background-repeat:no-repeat;

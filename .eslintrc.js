@@ -29,7 +29,6 @@ module.exports = {
         'eslint:recommended',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
-        'plugin:jsx-a11y/recommended',
         'plugin:promise/recommended',
         'plugin:sonarjs/recommended-legacy',
     ],
@@ -55,6 +54,10 @@ module.exports = {
     ],
 
     rules: {
+        'no-console': 'error',
+        'promise/catch-or-return': 0,
+        'promise/always-return': 0,
+        '@typescript-eslint/consistent-type-definitions': 'error',
         'simple-import-sort/imports': 'error',
         'simple-import-sort/exports': 'error',
         'no-undef': 0,
@@ -62,11 +65,32 @@ module.exports = {
         'no-unused-vars': 0,
         'react-hooks/exhaustive-deps': 0,
         'sonarjs/no-collapsible-if': 0,
-        '@typescript-eslint/no-unused-vars': 0,
         'react-hooks/rules-of-hooks': 0,
         'sonarjs/no-identical-expressions': 0,
         '@typescript-eslint/no-explicit-any': 0,
         '@typescript-eslint/ban-ts-comment': 0,
+        'sonarjs/no-small-switch': 0,
+        'eslint-disable-next-line': 0,
+        'lines-between-class-members': [
+            'error',
+            'always',
+            { exceptAfterSingleLine: true },
+        ],
+        '@typescript-eslint/naming-convention': [
+            'error',
+            {
+                selector: 'interface',
+                format: ['PascalCase'],
+                custom: {
+                    regex: '^I[A-Z]',
+                    match: true,
+                },
+            },
+        ],
+        'react/function-component-definition': [
+            2,
+            { namedComponents: 'arrow-function' },
+        ],
         'padding-line-between-statements': [
             'warn',
             { blankLine: 'always', prev: '*', next: 'block' },

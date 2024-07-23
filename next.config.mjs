@@ -4,8 +4,10 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: true
+    ignoreBuildErrors: true,
+
   },
+  reactStrictMode: false,
   webpack(config, options) {
     const {dev, isServer} = options;
     if (dev && isServer) {
@@ -17,6 +19,10 @@ const nextConfig = {
         reportFilename: isServer ? '../analyze/server.html' : './analyze/client.html',
         openAnalyzer: true
       }));
+    }
+
+    if(config.resolve?.fallback){
+      config.resolve.fallback.fs = false
     }
 
     return config;

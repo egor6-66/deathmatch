@@ -7,7 +7,7 @@ import { motionStore } from '@/stores';
 
 import styles from './styles.module.scss';
 
-function OptionsPage() {
+const OptionsPage = () => {
     const homePagesMotion = motionStore.use.homePagesMotion();
 
     const { width, height } = useWindowSizeObserver({
@@ -18,7 +18,7 @@ function OptionsPage() {
         homePagesMotion.setCoord({ initial: { y: -height }, exit: { y: height } });
     };
 
-    const menuItems: NavMenuTypes.Item[] = [
+    const menuItems: NavMenuTypes.IItem[] = [
         { id: 0, title: 'ОСНОВНЫЕ', path: paths.customization.BASIC, onMouseEnter: optimizationCoords },
         { id: 1, title: 'УПРАВЛЕНИЕ', path: paths.customization.CONTROL, onMouseEnter: optimizationCoords },
         { id: 2, title: 'ПЕРСОНАЖ', path: paths.customization.CHARACTER, onMouseEnter: optimizationCoords },
@@ -31,6 +31,6 @@ function OptionsPage() {
             <NavMenu items={menuItems} className={styles.menu} />
         </section>
     );
-}
+};
 
 export default OptionsPage;

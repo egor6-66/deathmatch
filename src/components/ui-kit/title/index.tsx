@@ -1,19 +1,16 @@
 import React, { useEffect, useRef } from 'react';
 import classNames from 'classnames';
 
-import { useEffectOnce } from '@/hooks';
-import Motion from '@/stores/motion';
-
 import * as TitleProps from './interface';
 
 import styles from './styles.module.scss';
 
-function Title(props: TitleProps.Props) {
+const Title = (props: TitleProps.IProps) => {
     const { children, variant = 'h1', blink } = props;
 
     const ref = useRef<HTMLDivElement | null>(null);
 
-    useEffectOnce(() => {
+    useEffect(() => {
         if (blink && ref.current) {
             let aBlinkingString = '';
 
@@ -28,17 +25,15 @@ function Title(props: TitleProps.Props) {
             if ('innerHTML' in ref.current) {
                 ref.current.innerHTML = aBlinkingString;
             }
-
-            const selector = document.getElementsByName('blink');
         }
-    });
+    }, []);
 
     return (
         <h1 ref={ref} className={classNames(styles.title, styles[variant])}>
             {children}
         </h1>
     );
-}
+};
 
 export type { TitleProps };
 

@@ -2,13 +2,15 @@
 
 import { ReactNode } from 'react';
 
-import { RoutingTransitionEffect } from '@/components/effects';
-import { motionStore } from '@/stores';
+import { Canvas, RoutingTransition } from './utils';
 
-function Layout({ children }: { children: ReactNode }) {
-    const homePagesMotion = motionStore.use.homePagesMotion();
-
-    return <RoutingTransitionEffect motionVariant={homePagesMotion.value}>{children}</RoutingTransitionEffect>;
-}
+const Layout = ({ children }: { children: ReactNode }) => {
+    return (
+        <>
+            <RoutingTransition>{children}</RoutingTransition>
+            <Canvas />
+        </>
+    );
+};
 
 export default Layout;

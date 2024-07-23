@@ -1,8 +1,7 @@
 import { configMediaQuery, useElementSizeObserver, useSizeObserver, useWindowSizeObserver } from 'react-screen-hooks';
 
-import useAudio from './useAudio';
-import useEffectOnce from './useEffectOnce';
 import useFirstMount from './useFirstMount';
 import usePrevious from './usePreviusValue';
+import useUpdateEffect from './useUpdateEffect';
 
-export { configMediaQuery, useAudio, useEffectOnce, useElementSizeObserver, useFirstMount, usePrevious, useSizeObserver, useWindowSizeObserver };
+export { configMediaQuery, useElementSizeObserver, useFirstMount, usePrevious, useSizeObserver, useUpdateEffect, useWindowSizeObserver };

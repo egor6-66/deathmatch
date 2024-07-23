@@ -4,7 +4,7 @@ import * as ButtonTypes from './interface';
 
 import styles from './styles.module.scss';
 
-function Button(props: ButtonTypes.Props) {
+const Button = (props: ButtonTypes.IProps) => {
     const { children, ...rest } = props;
 
     return (
@@ -12,7 +12,7 @@ function Button(props: ButtonTypes.Props) {
             {children}
         </button>
     );
-}
+};
 
 export type { ButtonTypes };
 

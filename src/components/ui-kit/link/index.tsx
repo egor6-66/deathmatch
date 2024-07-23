@@ -4,7 +4,7 @@ import * as LinkTypes from './interface';
 
 import styles from './styles.module.scss';
 
-function Link(props: LinkTypes.Props) {
+const Link = (props: LinkTypes.IProps) => {
     const { children, ...rest } = props;
 
     return (
@@ -12,7 +12,7 @@ function Link(props: LinkTypes.Props) {
             {children}
         </NextLink>
     );
-}
+};
 
 export default Link;
 

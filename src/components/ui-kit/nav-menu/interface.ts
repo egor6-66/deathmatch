@@ -1,13 +1,13 @@
-import { HTMLAttributes, MouseEventHandler } from 'react';
+import { HTMLAttributes } from 'react';
 
-export interface Item {
+export interface IItem {
     id: UniqueId;
     title: string;
     path: string;
     onMouseEnter?: () => void;
 }
 
-export interface Props extends HTMLAttributes<HTMLMenuElement> {
-    items: Item[];
+export interface IProps extends HTMLAttributes<HTMLMenuElement> {
+    items: IItem[];
     direction?: 'column' | 'row';
 }

@@ -1,17 +1,17 @@
 import useZustand, { StoreTypes } from 'react-use-zustand';
 import { MotionProps } from 'framer-motion';
 
-type Store = {
+interface IStore {
     homePagesMotion: MotionProps;
-};
+}
 
-type Methods = {
+interface IMethods {
     homePagesMotion: {
         setCoord: (value: MotionProps) => void;
     };
-};
+}
 
-const motionStore = useZustand<Store, Methods>({
+const motionStore = useZustand<IStore, IMethods>({
     keys: ['homePagesMotion'],
     default: {
         homePagesMotion: {
