@@ -28,35 +28,41 @@
   font-size: 24px;
   font-weight: 500;
 }
-
-
 @keyframes blink {
+
   78% {
     color: inherit;
     text-shadow: inherit;
   }
+
   79%{
-    color: rgba(0,0,0,0.3);
+    color: rgb(0 0 0 / 30%);
   }
+
   80% {
     text-shadow: none;
   }
+
   81% {
     color: inherit;
     text-shadow: inherit;
   }
+
   82% {
-    color: rgba(0,0,0,0.3);
+    color: rgb(0 0 0 / 30%);
     text-shadow: none;
   }
+
   83% {
     color: inherit;
     text-shadow: inherit;
   }
+
   92% {
-    color: rgba(0,0,0,0.3);
+    color: rgb(0 0 0 / 30%);
     text-shadow: none;
   }
+
   92.5% {
     color: inherit;
     text-shadow: inherit;
