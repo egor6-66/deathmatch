@@ -4,4 +4,5 @@ interface IMenuItem<T = any> {
     id: UniqueId;
     title: string;
     payload: T;
+    onClick?: () => void;
 }

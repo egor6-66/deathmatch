@@ -19,11 +19,11 @@ const RegistrationPage = () => {
 
     const handleRegistration = async () => {
         try {
-            // if (nickname.value.length < 6) return nickname.setError('Слишком короткий nickname');
-            // if (password.value.length < 6) return password.setError('Слишком короткий password');
-            // const check = await checkUniqueNickname({ variables: { nickname: nickname.value } });
-            // if (!check.data?.uniqueNickname) return nickname.setError('nickname уже занят');
-            // await registration({ nickname: nickname.value, password: password.value });
+            if (nickname.value.length < 6) return nickname.setError('Слишком короткий nickname');
+            if (password.value.length < 6) return password.setError('Слишком короткий password');
+            const check = await checkUniqueNickname({ variables: { nickname: nickname.value } });
+            if (!check.data?.uniqueNickname) return nickname.setError('nickname уже занят');
+            await registration({ nickname: nickname.value, password: password.value });
             replace(paths.main.MENU);
         } catch (e) {
             password.setError('error');

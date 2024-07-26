@@ -12,12 +12,14 @@ interface IProps {
         nickname: InputTypes.UseReturnedType;
         password: InputTypes.UseReturnedType;
     };
-
     handleLogin: () => void;
+    error: string;
 }
 
 const LoginView = (props: IProps) => {
-    const { inputs, handleLogin } = props;
+    const { inputs, handleLogin, error } = props;
+
+    const disabled = !inputs.nickname.value || !inputs.password.value || inputs.nickname.isError || inputs.password.isError;
 
     return (
         <section className={styles.loginPage}>
@@ -27,8 +29,11 @@ const LoginView = (props: IProps) => {
                 </SetCoords>
                 <Input attrs={{ ...inputs.nickname.inputAttrs, placeholder: 'NICKNAME' }} errorMessage={inputs.nickname.errorMessage} />
                 <Input attrs={{ ...inputs.password.inputAttrs, placeholder: 'PASSWORD' }} errorMessage={inputs.password.errorMessage} />
+                {error && <p>{error}</p>}
                 <SetCoords from={'LOGIN'} to={'MENU'}>
-                    <Button onClick={handleLogin}>send</Button>
+                    <Button disabled={disabled} onClick={handleLogin}>
+                        send
+                    </Button>
                 </SetCoords>
             </div>
         </section>

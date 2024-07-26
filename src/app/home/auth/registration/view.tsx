@@ -29,7 +29,7 @@ const RegistrationView = (props: IProps) => {
                 <Input attrs={{ ...inputs.nickname.inputAttrs, placeholder: 'NICKNAME' }} errorMessage={inputs.nickname.errorMessage} />
                 <Input attrs={{ ...inputs.password.inputAttrs, placeholder: 'PASSWORD' }} errorMessage={inputs.password.errorMessage} />
                 <SetCoords from={'REGISTRATION'} to={'MENU'}>
-                    <Button disabled={false} onClick={handleRegistration}>
+                    <Button disabled={disabled} onClick={handleRegistration}>
                         send
                     </Button>
                 </SetCoords>

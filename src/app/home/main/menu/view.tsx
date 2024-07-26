@@ -19,7 +19,7 @@ const MenuView = (props: IProps) => {
             <div className={styles.menu}>
                 {menuItems.map((i) => (
                     <SetCoords key={i.id} from={'MENU'} to={i.payload.page}>
-                        <Link key={i.id} href={i.payload.path}>
+                        <Link onClick={i.onClick} key={i.id} href={i.payload.path}>
                             {i.title}
                         </Link>
                     </SetCoords>
