@@ -15,4 +15,6 @@ export interface IUseProps {
         regex: RegExp;
         errorMessage: string;
     };
+    debounceDelay?: number;
+    debounce?: (value: string) => void;
 }

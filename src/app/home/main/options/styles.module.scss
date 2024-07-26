@@ -1,0 +1,12 @@
+@use '@/css/mixins';
+
+.optionsPage {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column(center, center);
+
+  .menu{
+    @include mixins.box-size(40%, 40%);
+    @include mixins.flex-column(center, center);
+    @include mixins.box-neon;
+  }
+}

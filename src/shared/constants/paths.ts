@@ -1,16 +1,24 @@
 export const home = {
-    MAIN: '/main',
-    LOGIN: '/login',
-    REGISTRATION: '/registration',
-    SERVER: '/server',
-    OPTIONS: '/options',
+    MAIN: '/home/main',
+    AUTH: '/home/auth',
+};
+
+export const main = {
+    MENU: `${home.MAIN}/menu`,
+    SERVER: `${home.MAIN}/server`,
+    OPTIONS: `${home.MAIN}/options`,
+};
+
+export const auth = {
+    LOGIN: `${home.AUTH}/login`,
+    REGISTRATION: `${home.AUTH}/registration`,
 };
 
 export const customization = {
-    BASIC: `${home.OPTIONS}/basic`,
-    CONTROL: `${home.OPTIONS}/control`,
-    CHARACTER: `${home.OPTIONS}/character`,
-    WEAPON: `${home.OPTIONS}/weapon`,
+    BASIC: `${main.OPTIONS}/basic`,
+    CONTROL: `${main.OPTIONS}/control`,
+    CHARACTER: `${main.OPTIONS}/character`,
+    WEAPON: `${main.OPTIONS}/weapon`,
 };
 
 export const game = {

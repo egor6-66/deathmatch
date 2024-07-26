@@ -1,14 +1,15 @@
 import React from 'react';
+import classNames from 'classnames';
 
 import * as ButtonTypes from './interface';
 
 import styles from './styles.module.scss';
 
 const Button = (props: ButtonTypes.IProps) => {
-    const { children, ...rest } = props;
+    const { children, disabled, ...rest } = props;
 
     return (
-        <button {...rest} className={styles.button}>
+        <button disabled={disabled} {...rest} className={classNames(styles.button, disabled ? styles.disabled : '')}>
             {children}
         </button>
     );

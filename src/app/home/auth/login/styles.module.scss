@@ -1,0 +1,13 @@
+@use '@/css/mixins';
+
+.loginPage {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column(center, center);
+
+  .form {
+    @include mixins.flex-column(center, center, 22px);
+    @include mixins.box-size(98%, 98%);
+    @include mixins.box-max-size(400px, 500px);
+    @include mixins.box-neon;
+  }
+}

@@ -6,7 +6,7 @@ import { useRouter } from 'next/navigation';
 const Home = () => {
     const { replace } = useRouter();
 
-    useEffect(() => replace('/main'), []);
+    useEffect(() => replace('/menu'), []);
 
     return null;
 };

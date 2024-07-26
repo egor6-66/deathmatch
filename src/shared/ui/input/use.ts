@@ -1,14 +1,18 @@
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useCallback, useState } from 'react';
+
+import { useDebounce } from '@/shared/hooks';
 
 import { IUseProps } from './interface';
 
 function use(props: IUseProps) {
+    const { debounceDelay, debounce, cut, validator } = props;
+
     const [state, setState] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
-    const { cut, validator } = props;
 
-    const onChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const onChange = useCallback((e: ChangeEvent<HTMLInputElement>) => {
         let value = e.target.value;
+        setErrorMessage('');
 
         if (cut) {
             value = value.replace(cut, '');
@@ -17,18 +21,29 @@ function use(props: IUseProps) {
         if (validator) {
             if (validator.regex.test(value)) {
                 setErrorMessage(validator.errorMessage);
-            } else {
-                setErrorMessage('');
             }
         }
 
         setState(value);
+    }, []);
+
+    const setError = (value: string) => {
+        setErrorMessage(value);
     };
+
+    useDebounce(
+        () => {
+            state && debounce && debounce(state);
+        },
+        debounceDelay || 1000,
+        [state]
+    );
 
     return {
         value: state,
         errorMessage,
         isError: !!errorMessage,
+        setError,
         inputAttrs: {
             value: state,
             onChange,
