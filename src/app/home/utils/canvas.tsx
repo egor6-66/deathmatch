@@ -25,7 +25,7 @@ const Canvas = () => {
         if (current && !engineRef.current) {
             const engine = new Engine(current);
             const scene = new Scene(engine);
-            const camera = new UniversalCamera('camera', new Vector3(0, 0, -3), scene);
+            const camera = new UniversalCamera('camera', new Vector3(0, 0, -4.1), scene);
             scene.clearColor = new Color4(0, 0, 0, 0);
             camera.speed = 0.2;
             camera.minZ = 0.05;
@@ -33,9 +33,11 @@ const Canvas = () => {
             sceneRef.current = scene;
             cameraRef.current = camera;
             camera.attachControl();
+
             SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then((data) => {
                 wallRef.current = data.meshes[1];
             });
+
             new HemisphericLight('hemi', new Vector3(0, 4, 0), scene);
             engine.runRenderLoop(() => {
                 scene.render();
