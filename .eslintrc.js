@@ -54,6 +54,7 @@ module.exports = {
     ],
 
     rules: {
+        'react/display-name': 0,
         'no-console': 'error',
         'promise/catch-or-return': 0,
         'promise/always-return': 0,
