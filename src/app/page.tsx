@@ -5,7 +5,6 @@ import { useRouter } from 'next/navigation';
 
 const Home = () => {
     const { replace } = useRouter();
-
     useEffect(() => replace('/home/auth/login'), []);
 
     return null;

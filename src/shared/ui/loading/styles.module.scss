@@ -1,0 +1,21 @@
+@use '@/css/mixins';
+
+.loading {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column(center, center);
+  line-break: normal;
+ font-size: 40px;
+  background-color: var(--bg-primary);
+  color: #f5222d;
+
+  .text{
+    display: block;
+  }
+}
+
+.fullScreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}

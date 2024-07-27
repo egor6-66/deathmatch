@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
 import { usePathname } from 'next/navigation';
 
-import { navigationStore } from './index';
+import { homeStore } from './index';
 
 const FrozenRouter = (props: { children: ReactNode }) => {
     const context = useContext(LayoutRouterContext ?? {});
@@ -19,7 +19,7 @@ const FrozenRouter = (props: { children: ReactNode }) => {
 };
 
 const RoutingTransition = ({ children }: { children: ReactNode }) => {
-    const pageCoords = navigationStore.use.pageCoords();
+    const pageCoords = homeStore.use.pageCoords();
     const key = usePathname();
 
     return (

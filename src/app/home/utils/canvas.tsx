@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { SceneLoader } from '@babylonjs/core';
+import { AbstractMesh, SceneLoader } from '@babylonjs/core';
 import { usePathname } from 'next/navigation';
 
 import babylon, { smoothMovement } from '@/shared/babylon';
@@ -12,6 +12,7 @@ import navigationStore from './store';
 
 const Canvas = () => {
     const canvasCoords = navigationStore.use.canvasCoords();
+    const wallIsReady = navigationStore.use.wallIsReady();
     const pathname = usePathname();
     const isFirstMount = useFirstMount();
     const initCameraPosition = useRef(false);
@@ -30,8 +31,11 @@ const Canvas = () => {
     }, [camera]);
 
     useEffect(() => {
-        SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb');
-    }, []);
+        wallIsReady.set(false);
+        SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then(() => {
+            wallIsReady.set(true);
+        });
+    }, [scene]);
 
     useEffect(() => {
         if (!isFirstMount && scene) {

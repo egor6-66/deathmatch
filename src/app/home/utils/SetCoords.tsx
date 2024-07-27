@@ -1,7 +1,7 @@
 import { ReactNode, useCallback } from 'react';
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import { navigationStore } from '@/app/home/utils/index';
+import { homeStore } from '@/app/home/utils/index';
 import { paths } from '@/shared/constants';
 
 import coords from './coords';
@@ -16,8 +16,8 @@ interface IProps {
 
 const SetCoords = (props: IProps) => {
     const { children, from, to } = props;
-    const canvasCoords = navigationStore.use.canvasCoords();
-    const pageCoords = navigationStore.use.pageCoords();
+    const canvasCoords = homeStore.use.canvasCoords();
+    const pageCoords = homeStore.use.pageCoords();
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
     const updateCoords = useCallback(() => {

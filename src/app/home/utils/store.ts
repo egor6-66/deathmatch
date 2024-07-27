@@ -13,6 +13,7 @@ interface IPageCoords {
 interface IStore {
     pageCoords: IPageCoords;
     canvasCoords: ICoords;
+    wallIsReady: boolean;
 }
 
 interface IMethods {
@@ -21,8 +22,8 @@ interface IMethods {
     };
 }
 
-const navigationStore = useZustand<IStore, IMethods>({
-    keys: ['pageCoords', 'canvasCoords'],
+const homeStore = useZustand<IStore, IMethods>({
+    keys: ['pageCoords', 'canvasCoords', 'wallIsReady'],
     methods: {
         pageCoords: (getState) => ({
             setCoord: (value) => {
@@ -33,5 +34,5 @@ const navigationStore = useZustand<IStore, IMethods>({
     },
 });
 
-export type NavigationStoreTypes = StoreTypes<typeof navigationStore.use>;
-export default navigationStore;
+export type HomeStoreTypes = StoreTypes<typeof homeStore.use>;
+export default homeStore;
