@@ -1,5 +1,5 @@
 import React, { CSSProperties, useEffect, useRef } from 'react';
-import { Camera, Color4, CubeTexture, Engine, HemisphericLight, Scene, SceneLoader, UniversalCamera, Vector3 } from '@babylonjs/core';
+import { AbstractMesh, Color4, Engine, HemisphericLight, Scene, SceneLoader, UniversalCamera, Vector3 } from '@babylonjs/core';
 import { usePathname } from 'next/navigation';
 
 import { useFirstMount } from '@/shared/hooks';
@@ -16,7 +16,8 @@ const Canvas = () => {
     const canvasRef = useRef<HTMLCanvasElement | null>(null);
     const engineRef = useRef<Engine | null>(null);
     const sceneRef = useRef<Scene | null>(null);
-    const cameraRef = useRef<Camera | null>(null);
+    const cameraRef = useRef<UniversalCamera | null>(null);
+    const wallRef = useRef<AbstractMesh | null>(null);
 
     useEffect(() => {
         const { current } = canvasRef;
@@ -32,30 +33,15 @@ const Canvas = () => {
             sceneRef.current = scene;
             cameraRef.current = camera;
             camera.attachControl();
-
-            SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then(() => '');
-            const envTex = CubeTexture.CreateFromPrefilteredData('/environment/environment.env', scene);
-            scene.environmentTexture = envTex;
-
-            scene.createDefaultSkybox(envTex, true);
+            SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then((data) => {
+                wallRef.current = data.meshes[1];
+            });
             new HemisphericLight('hemi', new Vector3(0, 4, 0), scene);
             engine.runRenderLoop(() => {
                 scene.render();
             });
         }
     }, []);
-
-    useEffect(() => {
-        const resize = () => {
-            engineRef.current?.resize();
-        };
-
-        engineRef.current && window.addEventListener('resize', resize);
-
-        return () => {
-            window.removeEventListener('resize', resize);
-        };
-    }, [engineRef.current]);
 
     useEffect(() => {
         const scene = sceneRef.current as Scene;
@@ -116,6 +102,7 @@ const Canvas = () => {
         width: '100%',
         height: '100%',
         position: 'fixed',
+        objectFit: 'cover',
         top: 0,
         left: 0,
         zIndex: -1,

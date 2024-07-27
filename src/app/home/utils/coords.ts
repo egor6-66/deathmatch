@@ -3,15 +3,15 @@ interface ICoords {
     x: number;
     y: number;
 }
-const twoLvl = -0.9;
-const oneLvl = -2.7;
+const twoLvl = 1;
+const oneLvl = -1;
 
 const coords: Record<Pages, ICoords> = {
-    SERVER: { x: -3, y: twoLvl },
+    SERVER: { x: -2.5, y: twoLvl },
     MENU: { x: 0, y: twoLvl },
-    OPTIONS: { x: 3, y: twoLvl },
-    LOGIN: { x: 2, y: oneLvl },
-    REGISTRATION: { x: -2, y: oneLvl },
+    OPTIONS: { x: 2.5, y: twoLvl },
+    LOGIN: { x: 1.8, y: oneLvl },
+    REGISTRATION: { x: -1.8, y: oneLvl },
 };
 
 export type { Pages };
