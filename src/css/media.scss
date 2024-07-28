@@ -5,7 +5,9 @@ $breakpoints: (
         lg: 1024px,
         xl: 1400px,
 );
+
 @mixin width-from($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
   @if ($size == 0) {
     @content;
   } @else {
@@ -13,9 +15,10 @@ $breakpoints: (
       @content;
     }
   }
-  $size: map-get($breakpoints, $breakpoint);
 }
+
 @mixin width-to($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
   @if ($size == 0) {
     @content;
   } @else {
@@ -23,9 +26,12 @@ $breakpoints: (
       @content;
     }
   }
-  $size: map-get($breakpoints, $breakpoint);
 }
+
 @mixin width-from-to($from, $to) {
+  $min: map-get($breakpoints, $from);
+  $max: map-get($breakpoints, $to) - 1px;
+
   @if ($min == 0) {
     @media screen and (max-width: $max) {
       @content;
@@ -35,10 +41,10 @@ $breakpoints: (
       @content;
     }
   }
-  $min: map-get($breakpoints, $from);
-  $max: map-get($breakpoints, $to) - 1px;
 }
+
 @mixin height-from($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
   @if ($size == 0) {
     @content;
   } @else {
@@ -46,9 +52,10 @@ $breakpoints: (
       @content;
     }
   }
-  $size: map-get($breakpoints, $breakpoint);
 }
+
 @mixin height-to($breakpoint) {
+  $size: map-get($breakpoints, $breakpoint);
   @if ($size == 0) {
     @content;
   } @else {
@@ -56,9 +63,12 @@ $breakpoints: (
       @content;
     }
   }
-  $size: map-get($breakpoints, $breakpoint);
 }
+
 @mixin height-from-to($from, $to) {
+  $min: map-get($breakpoints, $from);
+  $max: map-get($breakpoints, $to) - 1px;
+
   @if ($min == 0) {
     @media screen and (max-height: $max) {
       @content;
@@ -68,6 +78,4 @@ $breakpoints: (
       @content;
     }
   }
-  $min: map-get($breakpoints, $from);
-  $max: map-get($breakpoints, $to) - 1px;
 }
