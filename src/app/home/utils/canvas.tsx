@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { HemisphericLight, SceneLoader, SpotLight, Vector3 } from '@babylonjs/core';
+import { HemisphericLight, SceneLoader, Vector3 } from '@babylonjs/core';
 import { usePathname } from 'next/navigation';
 
 import babylon, { smoothMovement } from '@/shared/babylon';
@@ -17,15 +17,13 @@ const Canvas = () => {
     const isFirstMount = useFirstMount();
     const initCameraPosition = useRef(false);
     const { BabylonCanvas, scene, camera } = babylon();
-    const animationTrigger = pathname.split('/')[3];
+    const pageWithSwitch = pathname.split('/')[3].toUpperCase() as Pages;
 
     useEffect(() => {
         if (!initCameraPosition.current) {
-            const page = pathname.split('/').pop()?.toUpperCase() as Pages;
-
-            if (page in coords && camera) {
-                camera.position.x = coords[page].x;
-                camera.position.y = coords[page].y;
+            if (pageWithSwitch in coords && camera) {
+                camera.position.x = coords[pageWithSwitch].x;
+                camera.position.y = coords[pageWithSwitch].y;
                 initCameraPosition.current = true;
             }
         }
@@ -34,10 +32,6 @@ const Canvas = () => {
     useEffect(() => {
         wallIsReady.set(false);
         SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then(() => {
-            // [-3, 0, 3].forEach((i) => {
-            //     const light = new SpotLight('spotLight', new Vector3(i, 3, -1.5), new Vector3(0, -4, 2), Math.PI / 2, 30, scene);
-            //     light.intensity = 100;
-            // });
             scene && new HemisphericLight('hemi', new Vector3(0, 4, 0), scene);
             wallIsReady.set(true);
         });
@@ -47,7 +41,7 @@ const Canvas = () => {
         if (!isFirstMount && scene) {
             smoothMovement({ scene, speed: 0.08, coords: canvasCoords.value });
         }
-    }, [animationTrigger]);
+    }, [pageWithSwitch]);
 
     return <BabylonCanvas />;
 };

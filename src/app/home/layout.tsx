@@ -3,9 +3,10 @@
 import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 
+import { RoutingTransition } from '@/shared/animations';
 import { Loading } from '@/shared/ui';
 
-import { Canvas, homeStore, RoutingTransition } from './utils';
+import { Canvas, homeStore } from './utils';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
     const wallIsReady = homeStore.use.wallIsReady();

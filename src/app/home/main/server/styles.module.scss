@@ -1,0 +1,7 @@
+@use '@/css/mixins';
+
+.serverLayout{
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex(center, center);
+  padding: 12px;
+}
