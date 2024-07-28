@@ -21,6 +21,11 @@ export const customization = {
     WEAPON: `${main.OPTIONS}/weapon`,
 };
 
+export const server = {
+    CREATE: `${main.SERVER}/create`,
+    FIND: `${main.SERVER}/find`,
+};
+
 export const game = {
     BATTLEFIELD: `/battlefield`,
 };

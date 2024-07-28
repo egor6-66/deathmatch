@@ -1,11 +1,8 @@
 'use client';
 
 import { ReactNode, useContext, useRef } from 'react';
-import { AnimatePresence, motion } from 'framer-motion';
+import { AnimatePresence, motion, MotionProps } from 'framer-motion';
 import { LayoutRouterContext } from 'next/dist/shared/lib/app-router-context.shared-runtime';
-import { usePathname } from 'next/navigation';
-
-import { homeStore } from './index';
 
 const FrozenRouter = (props: { children: ReactNode }) => {
     const context = useContext(LayoutRouterContext ?? {});
@@ -18,22 +15,25 @@ const FrozenRouter = (props: { children: ReactNode }) => {
     return <LayoutRouterContext.Provider value={frozen}>{props.children}</LayoutRouterContext.Provider>;
 };
 
-const RoutingTransition = ({ children }: { children: ReactNode }) => {
-    const pageCoords = homeStore.use.pageCoords();
-    const key = usePathname();
+interface IProps extends MotionProps {
+    children: ReactNode;
+    animationTrigger: string | number;
+}
+
+const RoutingTransition = (props: IProps) => {
+    const { children, animationTrigger, ...rest } = props;
 
     return (
         <AnimatePresence mode="popLayout" initial={false}>
             <motion.div
-                key={key}
-                initial={{ ...pageCoords.value?.initial }}
-                animate={{ x: 0, y: 0 }}
-                exit={{ ...pageCoords.value?.exit }}
+                key={animationTrigger}
                 style={{ width: '100%', height: '100%' }}
-                transition={{ duration: 0.35 }}
+                transition={rest?.transition ? rest?.transition : { duration: 0.35 }}
+                {...rest}
                 suppressHydrationWarning
             >
-                <FrozenRouter>{children}</FrozenRouter>
+                {children}
+                {/*<FrozenRouter>{children}</FrozenRouter>*/}
             </motion.div>
         </AnimatePresence>
     );

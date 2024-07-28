@@ -6,8 +6,9 @@ interface ICoords {
 }
 
 interface IPageCoords {
-    initial: ICoords;
-    exit: ICoords;
+    initial?: ICoords;
+    animate?: ICoords;
+    exit?: ICoords;
 }
 
 interface IStore {
@@ -16,22 +17,8 @@ interface IStore {
     wallIsReady: boolean;
 }
 
-interface IMethods {
-    pageCoords: {
-        setCoord: (value: IPageCoords) => void;
-    };
-}
-
-const homeStore = useZustand<IStore, IMethods>({
+const homeStore = useZustand<IStore>({
     keys: ['pageCoords', 'canvasCoords', 'wallIsReady'],
-    methods: {
-        pageCoords: (getState) => ({
-            setCoord: (value) => {
-                const state = getState();
-                state.pageCoords.set(value);
-            },
-        }),
-    },
 });
 
 export type HomeStoreTypes = StoreTypes<typeof homeStore.use>;

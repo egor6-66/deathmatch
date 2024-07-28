@@ -25,6 +25,7 @@ const SetCoords = (props: IProps) => {
 
         const getPageCoords = () => {
             const initial = { x: 0, y: 0 };
+            const animate = { x: 0, y: 0 };
             const exit = { x: 0, y: 0 };
 
             if ((from === 'OPTIONS' && to === 'MENU') || (from === 'MENU' && to === 'SERVER') || (from === 'LOGIN' && to === 'REGISTRATION')) {
@@ -65,7 +66,7 @@ const SetCoords = (props: IProps) => {
                 initial.y = height;
             }
 
-            return { initial, exit };
+            return { initial, animate, exit };
         };
 
         pageCoords.set(getPageCoords());

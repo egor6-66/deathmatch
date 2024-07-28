@@ -17,6 +17,7 @@ const Canvas = () => {
     const isFirstMount = useFirstMount();
     const initCameraPosition = useRef(false);
     const { BabylonCanvas, scene, camera } = babylon();
+    const animationTrigger = pathname.split('/')[3];
 
     useEffect(() => {
         if (!initCameraPosition.current) {
@@ -28,7 +29,7 @@ const Canvas = () => {
                 initCameraPosition.current = true;
             }
         }
-    }, [camera]);
+    }, [camera, pathname]);
 
     useEffect(() => {
         wallIsReady.set(false);
@@ -41,7 +42,7 @@ const Canvas = () => {
         if (!isFirstMount && scene) {
             smoothMovement({ scene, speed: 0.08, coords: canvasCoords.value });
         }
-    }, [pathname]);
+    }, [animationTrigger]);
 
     return <BabylonCanvas />;
 };

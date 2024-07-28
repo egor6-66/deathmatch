@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "start": "next start",
     "build": "next build",
     "bundle-analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint",

@@ -1,0 +1,7 @@
+@use '@/css/mixins';
+
+.createServerPage {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column(center, center);
+  @include mixins.box-neon;
+}
