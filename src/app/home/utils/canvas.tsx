@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { AbstractMesh, SceneLoader } from '@babylonjs/core';
+import { HemisphericLight, SceneLoader, SpotLight, Vector3 } from '@babylonjs/core';
 import { usePathname } from 'next/navigation';
 
 import babylon, { smoothMovement } from '@/shared/babylon';
@@ -34,6 +34,11 @@ const Canvas = () => {
     useEffect(() => {
         wallIsReady.set(false);
         SceneLoader.ImportMeshAsync('', '/wall/', 'wall.glb').then(() => {
+            // [-3, 0, 3].forEach((i) => {
+            //     const light = new SpotLight('spotLight', new Vector3(i, 3, -1.5), new Vector3(0, -4, 2), Math.PI / 2, 30, scene);
+            //     light.intensity = 100;
+            // });
+            scene && new HemisphericLight('hemi', new Vector3(0, 4, 0), scene);
             wallIsReady.set(true);
         });
     }, [scene]);

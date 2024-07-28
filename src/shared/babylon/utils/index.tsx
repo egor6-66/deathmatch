@@ -1,3 +1,4 @@
+import createGizmos from './createGizmos';
 import smoothMovement from './smoothMovement';
 
-export { smoothMovement };
+export { createGizmos, smoothMovement };
