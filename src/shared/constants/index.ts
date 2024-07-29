@@ -1,3 +1,4 @@
+import * as canvasCoords from './canvasCoords';
 import * as paths from './paths';
 
-export { paths };
+export { canvasCoords, paths };

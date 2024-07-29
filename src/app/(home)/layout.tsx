@@ -4,13 +4,13 @@ import { ReactNode } from 'react';
 import { usePathname } from 'next/navigation';
 
 import { RoutingTransition } from '@/shared/animations';
+import { HomePagesCanvas } from '@/shared/components';
+import { homePagesStore } from '@/shared/stores';
 import { Loading } from '@/shared/ui';
 
-import { Canvas, homeStore } from './utils';
-
 const HomeLayout = ({ children }: { children: ReactNode }) => {
-    const wallIsReady = homeStore.use.wallIsReady();
-    const homePageCoords = homeStore.use.homePageCoords();
+    const wallIsReady = homePagesStore.use.wallIsReady();
+    const homePageCoords = homePagesStore.use.homePageCoords();
 
     const pathname = usePathname();
 
@@ -27,7 +27,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 children
             )}
 
-            <Canvas />
+            <HomePagesCanvas />
         </>
     );
 };

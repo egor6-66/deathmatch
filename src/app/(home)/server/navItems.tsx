@@ -1,9 +1,10 @@
-import { homeStore, SetCoords } from '@/app/(home)/utils';
 import { paths } from '@/shared/constants';
+import { SetHomePageCoords } from '@/shared/hoks';
+import { homePagesStore } from '@/shared/stores';
 import { Link } from '@/shared/ui';
 
 const navItems = () => {
-    const homePageCoords = homeStore.use.homePageCoords();
+    const homePageCoords = homePagesStore.use.homePageCoords();
 
     return [
         {
@@ -33,9 +34,9 @@ const navItems = () => {
         {
             id: 3,
             element: (
-                <SetCoords from={'SERVER'} to={'MAIN'}>
+                <SetHomePageCoords from={'SERVER'} to={'MAIN'}>
                     <Link href={paths.home.MAIN}>ВУРНУТЬСЯ В МЕНЮ</Link>
-                </SetCoords>
+                </SetHomePageCoords>
             ),
         },
     ];

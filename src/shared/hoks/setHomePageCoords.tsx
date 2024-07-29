@@ -1,28 +1,27 @@
 import { ReactNode, useCallback } from 'react';
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import { paths } from '@/shared/constants';
+import { canvasCoords } from '@/shared/constants';
+import { Pages } from '@/shared/interfaces';
+import { homePagesStore } from '@/shared/stores';
 
-import coords from './coords';
-import homeStore from './store';
-
-export type Pages = keyof typeof paths.home;
+const homePagesCoords = canvasCoords.homePages;
 
 interface IProps {
     children: ReactNode;
-    from: Pages;
-    to: Pages;
+    from: Pages.HomePages;
+    to: Pages.HomePages;
     onMouseLeave?: () => void;
 }
 
 const SetCoords = (props: IProps) => {
     const { children, from, to, onMouseLeave } = props;
-    const canvasCoords = homeStore.use.canvasCoords();
-    const homePageCoords = homeStore.use.homePageCoords();
+    const canvasCoords = homePagesStore.use.canvasCoords();
+    const homePageCoords = homePagesStore.use.homePageCoords();
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
     const updateCoords = useCallback(() => {
-        canvasCoords.set(coords[to]);
+        canvasCoords.set(homePagesCoords[to]);
 
         const initial = { x: 0, y: 0 };
         const animate = { x: 0, y: 0 };

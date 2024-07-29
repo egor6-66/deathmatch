@@ -6,8 +6,13 @@ import MyServersView from './view';
 
 const MyServersPage = () => {
     const viewerServers = gameServersApi.getViewerServers();
+    const getServer = gameServersApi.getServer();
 
-    return <MyServersView servers={viewerServers.data?.servers} />;
+    const handleServerClick = async (id: number) => {
+        // const server = await getServer({ variables: { id } });
+    };
+
+    return <MyServersView servers={viewerServers.data?.servers} handleServerClick={handleServerClick} />;
 };
 
 export default MyServersPage;

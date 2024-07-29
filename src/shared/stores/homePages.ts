@@ -17,9 +17,9 @@ interface IStore {
     wallIsReady: boolean;
 }
 
-const homeStore = useZustand<IStore>({
+const homePagesStore = useZustand<IStore>({
     keys: ['homePageCoords', 'canvasCoords', 'wallIsReady'],
 });
 
-export type HomeStoreTypes = StoreTypes<typeof homeStore.use>;
-export default homeStore;
+export type HomePagesStoreTypes = StoreTypes<typeof homePagesStore.use>;
+export default homePagesStore;

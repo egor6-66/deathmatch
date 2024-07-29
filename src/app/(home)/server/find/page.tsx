@@ -6,8 +6,13 @@ import FindServerView from './view';
 
 const FindServerPage = () => {
     const servers = gameServersApi.getAllServers();
+    const getServer = gameServersApi.getServer();
 
-    return <FindServerView servers={servers.data?.allServers} />;
+    const handleServerClick = async (id: number) => {
+        // const server = await getServer({ variables: { id } });
+    };
+
+    return <FindServerView servers={servers.data?.allServers} handleServerClick={handleServerClick} />;
 };
 
 export default FindServerPage;

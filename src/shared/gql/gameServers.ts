@@ -1,13 +1,15 @@
-import { gql, useMutation, useQuery } from '@apollo/client';
+import { gql, useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
 import { GameServer } from '@/shared/interfaces';
 
+const serverFields = ['id', 'name', 'private', 'url'];
+
 const createServer = () => {
-    const [mutation] = useMutation<{ server: GameServer.IGameServer }>(
+    const [mutation] = useMutation<{ newServer: GameServer.IGameServer }>(
         gql`
-            mutation createServer($password: String!, $name: String!) {
-                createServer(data: { password: $password, name: $name }) {
-                    name
+            mutation newServer($password: String!, $name: String!) {
+                newServer(data: { password: $password, name: $name }) {
+                    ${serverFields}
                 }
             }
         `
@@ -23,9 +25,7 @@ const getViewerServers = () => {
         gql`
             query servers {
                 servers {
-                    id
-                    name
-                    private
+                    ${serverFields}
                 }
             }
         `
@@ -37,13 +37,23 @@ const getAllServers = () => {
         gql`
             query allServers {
                 allServers {
-                    id
-                    name
-                    private
+                    ${serverFields}
                 }
             }
         `
     );
 };
 
-export { createServer, getAllServers, getViewerServers };
+const getServer = () => {
+    return useLazyQuery<{ server: GameServer.IGameServer }>(
+        gql`
+            query server($id: Int!) {
+                server(id: $id) {
+                    ${serverFields}
+                }
+            }
+        `
+    )[0];
+};
+
+export { createServer, getAllServers, getServer, getViewerServers };

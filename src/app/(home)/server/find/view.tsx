@@ -4,14 +4,15 @@ import { GameServer } from '@/shared/interfaces';
 import styles from './styles.module.scss';
 interface IProps {
     servers?: GameServer.IGameServer[];
+    handleServerClick: (id: number) => void;
 }
 
 const FindServerView = (props: IProps) => {
-    const { servers } = props;
+    const { servers, handleServerClick } = props;
 
     return (
         <div className={styles.findServerPage}>
-            <ServersList servers={servers} />
+            <ServersList servers={servers} handleServerClick={handleServerClick} />
         </div>
     );
 };

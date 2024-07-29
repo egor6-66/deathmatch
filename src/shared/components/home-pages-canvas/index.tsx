@@ -3,28 +3,30 @@ import { AbstractMesh, Camera, HemisphericLight, SceneLoader, Vector3 } from '@b
 import { usePathname } from 'next/navigation';
 
 import babylon, { smoothMovement } from '@/shared/babylon';
+import { canvasCoords } from '@/shared/constants';
 import { useFirstMount } from '@/shared/hooks';
+import { Pages } from '@/shared/interfaces';
+import { homePagesStore } from '@/shared/stores';
 
 import '@babylonjs/loaders';
 
-import coords, { Pages } from './coords';
-import navigationStore from './store';
+const homePagesCoords = canvasCoords.homePages;
 
-const Canvas = () => {
-    const canvasCoords = navigationStore.use.canvasCoords();
-    const wallIsReady = navigationStore.use.wallIsReady();
+const HomePagesCanvas = () => {
+    const canvasCoords = homePagesStore.use.canvasCoords();
+    const wallIsReady = homePagesStore.use.wallIsReady();
     const pathname = usePathname();
     const isFirstMount = useFirstMount();
     const initCameraPosition = useRef(false);
     const meshRef = useRef<AbstractMesh | null>(null);
     const { BabylonCanvas, scene, camera, engine } = babylon();
-    const pageWithSwitch = pathname.split('/')[1].toUpperCase() as Pages;
+    const pageWithSwitch = pathname.split('/')[1].toUpperCase() as Pages.HomePages;
 
     useEffect(() => {
         if (!initCameraPosition.current) {
-            if (pageWithSwitch in coords && camera) {
-                camera.position.x = coords[pageWithSwitch].x;
-                camera.position.y = coords[pageWithSwitch].y;
+            if (pageWithSwitch in homePagesCoords && camera) {
+                camera.position.x = homePagesCoords[pageWithSwitch].x;
+                camera.position.y = homePagesCoords[pageWithSwitch].y;
                 initCameraPosition.current = true;
 
                 if (window.innerWidth > window.innerHeight) {
@@ -74,4 +76,4 @@ const Canvas = () => {
     return <BabylonCanvas />;
 };
 
-export default Canvas;
+export default HomePagesCanvas;

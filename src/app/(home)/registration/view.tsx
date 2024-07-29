@@ -1,9 +1,6 @@
-import React from 'react';
-
 import { paths } from '@/shared/constants';
+import { SetHomePageCoords } from '@/shared/hoks';
 import { Button, Input, InputTypes, Link } from '@/shared/ui';
-
-import { SetCoords } from '../utils';
 
 import styles from './styles.module.scss';
 
@@ -23,16 +20,16 @@ const RegistrationView = (props: IProps) => {
     return (
         <section className={styles.registrationPage}>
             <div className={styles.form}>
-                <SetCoords from={'REGISTRATION'} to={'LOGIN'}>
+                <SetHomePageCoords from={'REGISTRATION'} to={'LOGIN'}>
                     <Link href={paths.home.LOGIN}>go to login</Link>
-                </SetCoords>
+                </SetHomePageCoords>
                 <Input attrs={{ ...inputs.nickname.inputAttrs, placeholder: 'NICKNAME' }} errorMessage={inputs.nickname.errorMessage} />
                 <Input attrs={{ ...inputs.password.inputAttrs, placeholder: 'PASSWORD' }} errorMessage={inputs.password.errorMessage} />
-                <SetCoords from={'REGISTRATION'} to={'MAIN'}>
+                <SetHomePageCoords from={'REGISTRATION'} to={'MAIN'}>
                     <Button disabled={disabled} onClick={handleRegistration}>
                         send
                     </Button>
-                </SetCoords>
+                </SetHomePageCoords>
             </div>
         </section>
     );
