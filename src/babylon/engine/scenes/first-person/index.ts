@@ -1,4 +1,4 @@
-import { DirectionalLight, Engine, HemisphericLight, Scene, Vector3 } from '@babylonjs/core';
+import { Camera, DirectionalLight, Engine, HemisphericLight, Matrix, Scene, Vector3 } from '@babylonjs/core';
 
 import { IOptions } from '../../interfeces';
 
@@ -17,7 +17,34 @@ class FirstPersonScene {
         this.canvas = canvas;
         this.options = options;
         this.createScene();
+        // this.setPosition();
     }
+
+    // setPosition() {
+    //     const invertCameraViewProj = Matrix.Invert(this.camera.getTransformationMatrix());
+    //     const fromLeft = false;
+    //     const meshWidthInPixels = 2000;
+    //     const screenWidth = this.scene.getEngine().getRenderWidth(true);
+    //     const spacingWithBorder = spacingWithBorderInPixels / screenWidth;
+    //
+    //     const h = meshWidthInPixels / screenWidth;
+    //
+    //     const pOfst = fromLeft ? -1 + spacingWithBorder * 2 : 1 - h * 2 - spacingWithBorder * 2;
+    //
+    //     const p = new Vector3(-1, -1, -1 + 0.0001);
+    //     const q = new Vector3(-1 + 2 * h, -1, -1 + 0.0001);
+    //
+    //     const pt = Vector3.TransformCoordinates(p, invertCameraViewProj);
+    //     const qt = Vector3.TransformCoordinates(q, invertCameraViewProj);
+    //     const d = qt.subtract(pt).length();
+    //
+    //     mesh.scaling = new Vector3(d, d, d);
+    //
+    //     p.x = pOfst;
+    //
+    //     mesh.rotation = camera.rotation;
+    //     mesh.position = BABYLON.Vector3.TransformCoordinates(p, invertCameraViewProj);
+    // }
 
     createScene() {
         createEnvironment(this.scene).then(() => '');

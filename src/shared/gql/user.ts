@@ -3,7 +3,7 @@ import { gql, useLazyQuery, useQuery } from '@apollo/client';
 import { User } from '@/shared/interfaces';
 
 const getViewer = () => {
-    return useQuery<{ user: User.IUser }>(
+    return useQuery<{ viewer: User.IUser }>(
         gql`
             query viewer {
                 viewer {

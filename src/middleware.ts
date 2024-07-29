@@ -7,15 +7,15 @@ export async function middleware(request: NextRequest) {
     const accessToken = cookies().get('accessToken')?.value;
     const refreshToken = cookies().get('refreshToken')?.value;
 
-    if (Object.values(paths.main).find((path) => request.url.includes(path))) {
+    if (paths.PrivatePaths.find((path) => request.url.includes(process.env.HOST + path))) {
         if (!accessToken && !refreshToken) {
-            return NextResponse.redirect(new URL(paths.auth.LOGIN, request.url));
+            return NextResponse.redirect(new URL(paths.home.LOGIN, request.url));
         }
     }
 
-    if (Object.values(paths.auth).find((path) => request.url.includes(path))) {
+    if (paths.AuthPaths.find((path) => request.url.includes(process.env.HOST + path))) {
         if (accessToken) {
-            return NextResponse.redirect(new URL(paths.main.MENU, request.url));
+            return NextResponse.redirect(new URL(paths.home.MAIN, request.url));
         }
     }
 }
