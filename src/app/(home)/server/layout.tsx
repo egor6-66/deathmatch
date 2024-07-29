@@ -7,21 +7,23 @@ import { RoutingTransition } from '@/shared/animations';
 import { paths } from '@/shared/constants';
 import { ContentSwitcher, ContentSwitcherTypes, Link } from '@/shared/ui';
 
-import { SetCoords } from '../utils';
+import { homeStore, SetCoords } from '../utils';
 
 import styles from './styles.module.scss';
 
 const ServerLayout = ({ children }: { children: ReactNode }) => {
     const pathname = usePathname();
-
-    const currentPath = pathname.split('/')[4];
+    const homeAnimations = homeStore.use.homeAnimations();
+    const currentPath = pathname.split('/')[2];
 
     const items: ContentSwitcherTypes.IItems[] = [
         {
             id: 0,
             element:
                 currentPath === 'create' ? (
-                    <Link href={paths.server.FIND}>go to FIND servers</Link>
+                    <Link onMouseEnter={homeAnimations.clear} href={paths.server.FIND}>
+                        go to FIND servers
+                    </Link>
                 ) : (
                     <Link href={paths.server.CREATE}>go to CREATE servers</Link>
                 ),
@@ -39,7 +41,7 @@ const ServerLayout = ({ children }: { children: ReactNode }) => {
     return (
         <div className={styles.serverLayout}>
             <ContentSwitcher items={items}>
-                <RoutingTransition animationTrigger={currentPath} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} mode={'wait'}>
+                <RoutingTransition animationTrigger={pathname} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} mode={'wait'}>
                     {children}
                 </RoutingTransition>
             </ContentSwitcher>

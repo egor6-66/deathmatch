@@ -5,20 +5,20 @@ interface ICoords {
     y: number;
 }
 
-interface IPageCoords {
+interface IPageAnimations {
     initial?: ICoords;
     animate?: ICoords;
     exit?: ICoords;
 }
 
 interface IStore {
-    pageCoords: IPageCoords;
+    homeAnimations: IPageAnimations;
     canvasCoords: ICoords;
     wallIsReady: boolean;
 }
 
 const homeStore = useZustand<IStore>({
-    keys: ['pageCoords', 'canvasCoords', 'wallIsReady'],
+    keys: ['homeAnimations', 'canvasCoords', 'wallIsReady'],
 });
 
 export type HomeStoreTypes = StoreTypes<typeof homeStore.use>;
