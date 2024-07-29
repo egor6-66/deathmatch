@@ -1,3 +1,4 @@
+import * as GameServer from './gameServer';
 import * as User from './user';
 
-export type { User };
+export type { GameServer, User };

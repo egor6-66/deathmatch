@@ -2,7 +2,5 @@
 
 .findServerPage {
   @include mixins.box-size(100%, 100%);
-  @include mixins.flex-column(center, center);
-  color: #f5222d;
-  font-size: 40px;
+  @include mixins.flex;
 }
