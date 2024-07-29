@@ -16,9 +16,11 @@
     @include media.width-to(lg){
       @include mixins.box-size(100%, 60px);
       @include mixins.flex(flex-start, center, 22px);
-      padding:0 44px ;
+      padding:0 22px ;
     }
+    overflow: auto;
     padding: 44px 22px;
+
   }
 
   .border {

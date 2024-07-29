@@ -1,6 +1,7 @@
 
 html[data-theme="blood"] {
     --bg-primary: #000;
+    --bg-dimming: rgb(0 0 0 / 40%);
     --primary: #f5222d;
     --secondary: #820014;
     --text-primary: #fafafa;

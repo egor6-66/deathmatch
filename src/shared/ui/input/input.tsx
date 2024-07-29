@@ -8,10 +8,10 @@ const Input = (props: InputTypes.IProps) => {
     const { errorMessage, attrs } = props;
 
     return (
-        <>
-            <input {...attrs} className={styles.input} />
+        <div className={styles.input}>
+            <input {...attrs} />
             {errorMessage && <p className={styles.error}>{errorMessage}</p>}
-        </>
+        </div>
     );
 };
 

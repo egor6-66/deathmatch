@@ -1,6 +1,7 @@
 @use '@/css/mixins';
 
 .input {
+  @include mixins.flex;
   @include mixins.box-neon;
   padding: 12px;
   color: #fafafa;

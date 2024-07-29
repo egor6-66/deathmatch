@@ -12,12 +12,7 @@ const Loading = (props: LoadingTypes.IProps) => {
     return (
         <AnimatePresence>
             {isVisible ? (
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    className={classNames(styles.loading, fullScreen && styles.fullScreen)}
-                >
+                <div className={classNames(styles.loading, fullScreen && styles.fullScreen)}>
                     <div className={styles.text}>
                         {children.split('').map((l, i) => (
                             <motion.span
@@ -30,7 +25,7 @@ const Loading = (props: LoadingTypes.IProps) => {
                             </motion.span>
                         ))}
                     </div>
-                </motion.div>
+                </div>
             ) : null}
         </AnimatePresence>
     );

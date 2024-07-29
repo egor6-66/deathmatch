@@ -2,7 +2,19 @@
 
 .createServerPage {
   @include mixins.box-size(100%, 100%);
-  @include mixins.flex-column(center, center);
-  color: #f5222d;
-  font-size: 40px;
+  @include mixins.flex-column(space-between, center, 12px);
+  padding: 12px;
+
+  .params{
+    @include mixins.flex(center, center, 12px);
+
+  }
+
+  .map{
+    @include mixins.flex(center, center);
+    border-radius: var(--border-radius);
+    flex: 1;
+    width: 100%;
+    background-color:var(--bg-dimming);
+  }
 }

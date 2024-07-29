@@ -16,7 +16,9 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
 
     return (
         <>
-            <Loading isVisible={!wallIsReady.value}>DEATHMATCH</Loading>
+            <Loading isVisible={!wallIsReady.value} fullScreen>
+                DEATHMATCH
+            </Loading>
             {homePageCoords.value ? (
                 <RoutingTransition animationTrigger={pathname} {...homePageCoords.value}>
                     {children}
@@ -24,6 +26,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
             ) : (
                 children
             )}
+
             <Canvas />
         </>
     );

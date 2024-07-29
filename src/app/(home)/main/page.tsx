@@ -1,12 +1,11 @@
 'use client';
 
 import { paths } from '@/shared/constants';
-import { authApi, userApi } from '@/shared/gql';
+import { authApi } from '@/shared/gql';
 
 import MainView from './view';
 
 const MainPage = () => {
-    const user = userApi.getViewer();
     const logout = authApi.logout();
 
     const menuItems: Array<IMenuItem<{ path: string; page: keyof typeof paths.home }>> = [

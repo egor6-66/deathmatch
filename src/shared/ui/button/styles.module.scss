@@ -1,9 +1,25 @@
 @use '@/css/mixins';
 
 .button {
-  @include mixins.box-neon;
-  padding: 12px;
-  color: #fafafa;
+  color: var(--text-primary);
+  border-radius: var(--border-radius);
+  border: 2px solid var(--primary);
+  background-color: var(--bg-dimming);
+  font-size: 20px;
+  font-weight: 600;
+  padding: 8px 12px;
+  transition: all 0.5s;
+  will-change: transform;
+
+  &:hover{
+    @include mixins.box-neon;
+    transform: scale(0.97);
+  }
+
+  &:active{
+    @include mixins.box-neon;
+    transform: scale(0.99);
+  }
 }
 
 .disabled{

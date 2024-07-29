@@ -25,7 +25,7 @@ const RoutingTransition = (props: IProps) => {
             <motion.div
                 key={animationTrigger}
                 style={{ width: '100%', height: '100%' }}
-                transition={rest?.transition || { duration: 0.35 }}
+                transition={rest?.transition || { duration: 0.4 }}
                 {...rest}
                 suppressHydrationWarning
             >

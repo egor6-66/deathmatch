@@ -2,14 +2,16 @@
 
 .link {
   @include mixins.text-neon;
+  display: block;
   font-size: 20px;
   transition: color var(--animation-time);
+  text-align: center;
 
   &:hover {
     color: var(--primary);
   }
 }
 
-.active{
+.active {
   color: var(--primary);
 }
