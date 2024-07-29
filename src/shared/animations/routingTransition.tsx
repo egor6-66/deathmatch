@@ -30,7 +30,6 @@ const RoutingTransition = (props: IProps) => {
                 suppressHydrationWarning
             >
                 <FrozenRouter>{children}</FrozenRouter>
-                {/*{children}*/}
             </motion.div>
         </AnimatePresence>
     );

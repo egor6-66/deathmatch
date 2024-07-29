@@ -16,6 +16,7 @@ export const options = {
 export const server = {
     CREATE: `${home.SERVER}/create`,
     FIND: `${home.SERVER}/find`,
+    MY: `${home.SERVER}/my`,
 };
 
 export const game = {

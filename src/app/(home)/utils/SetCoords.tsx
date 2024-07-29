@@ -12,12 +12,13 @@ interface IProps {
     children: ReactNode;
     from: Pages;
     to: Pages;
+    onMouseLeave?: () => void;
 }
 
 const SetCoords = (props: IProps) => {
-    const { children, from, to } = props;
+    const { children, from, to, onMouseLeave } = props;
     const canvasCoords = homeStore.use.canvasCoords();
-    const homeAnimations = homeStore.use.homeAnimations();
+    const homePageCoords = homeStore.use.homePageCoords();
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
     const updateCoords = useCallback(() => {
@@ -65,10 +66,14 @@ const SetCoords = (props: IProps) => {
             initial.y = height;
         }
 
-        homeAnimations.set({ initial, animate, exit });
+        homePageCoords.set({ initial, animate, exit });
     }, []);
 
-    return <div onMouseEnter={updateCoords}>{children}</div>;
+    return (
+        <div onMouseLeave={onMouseLeave} onMouseEnter={updateCoords}>
+            {children}
+        </div>
+    );
 };
 
 export default SetCoords;

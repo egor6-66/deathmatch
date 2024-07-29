@@ -47,7 +47,7 @@ const Canvas = () => {
 
     useEffect(() => {
         if (!isFirstMount && scene) {
-            smoothMovement({ scene, speed: 0.08, coords: canvasCoords.value });
+            smoothMovement({ scene, speed: 1, coords: canvasCoords.value });
         }
     }, [pageWithSwitch]);
 

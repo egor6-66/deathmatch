@@ -10,15 +10,15 @@ import { Canvas, homeStore } from './utils';
 
 const HomeLayout = ({ children }: { children: ReactNode }) => {
     const wallIsReady = homeStore.use.wallIsReady();
-    const homeAnimations = homeStore.use.homeAnimations();
+    const homePageCoords = homeStore.use.homePageCoords();
 
     const pathname = usePathname();
 
     return (
         <>
             <Loading isVisible={!wallIsReady.value}>DEATHMATCH</Loading>
-            {homeAnimations.value ? (
-                <RoutingTransition animationTrigger={pathname} {...homeAnimations.value}>
+            {homePageCoords.value ? (
+                <RoutingTransition animationTrigger={pathname} {...homePageCoords.value}>
                     {children}
                 </RoutingTransition>
             ) : (

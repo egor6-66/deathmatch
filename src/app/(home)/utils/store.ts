@@ -12,13 +12,13 @@ interface IPageAnimations {
 }
 
 interface IStore {
-    homeAnimations: IPageAnimations;
+    homePageCoords: IPageAnimations;
     canvasCoords: ICoords;
     wallIsReady: boolean;
 }
 
 const homeStore = useZustand<IStore>({
-    keys: ['homeAnimations', 'canvasCoords', 'wallIsReady'],
+    keys: ['homePageCoords', 'canvasCoords', 'wallIsReady'],
 });
 
 export type HomeStoreTypes = StoreTypes<typeof homeStore.use>;

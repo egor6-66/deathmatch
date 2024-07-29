@@ -7,7 +7,7 @@ interface ISmooth {
 }
 
 function smoothMovement(props: ISmooth) {
-    const { speed, scene, coords } = props;
+    const { speed = 0.8, scene, coords } = props;
 
     const done: Record<string, boolean> = { x: false, y: false };
 
@@ -27,13 +27,13 @@ function smoothMovement(props: ISmooth) {
 
                 if (methods[key] === 'dec') {
                     if (currentPosition > targetPosition) {
-                        cameraPosition[key] -= speed;
+                        cameraPosition[key] -= speed / 10;
                     } else {
                         done[key] = true;
                     }
                 } else {
                     if (currentPosition < targetPosition) {
-                        cameraPosition[key] += speed;
+                        cameraPosition[key] += speed / 10;
                     } else {
                         done[key] = true;
                     }
