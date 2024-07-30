@@ -1,3 +1,5 @@
+'use client';
+
 import { ServersList } from '@/shared/components';
 import { GameServer } from '@/shared/interfaces';
 

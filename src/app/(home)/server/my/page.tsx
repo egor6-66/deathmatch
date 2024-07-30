@@ -6,7 +6,7 @@ import MyServersView from './view';
 
 const MyServersPage = () => {
     const viewerServers = gameServersApi.getViewerServers();
-    const getServer = gameServersApi.getServer();
+    // const getServer = gameServersApi.getServer();
 
     const handleServerClick = async (id: number) => {
         // const server = await getServer({ variables: { id } });

@@ -2,6 +2,7 @@ import { configMediaQuery, useElementSizeObserver, useSizeObserver, useWindowSiz
 
 import useDebounce from './useDebounce';
 import useFirstMount from './useFirstMount';
+import usePageTransition from './usePageTransition';
 import usePrevious from './usePreviusValue';
 import useTimeoutFn from './useTimeoutFn';
 import useUpdateEffect from './useUpdateEffect';
@@ -11,6 +12,7 @@ export {
     useDebounce,
     useElementSizeObserver,
     useFirstMount,
+    usePageTransition,
     usePrevious,
     useSizeObserver,
     useTimeoutFn,

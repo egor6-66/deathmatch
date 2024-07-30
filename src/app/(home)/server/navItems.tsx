@@ -1,7 +1,21 @@
+'use client';
+
+import { useWindowSizeObserver } from 'react-screen-hooks';
+
+import homePagesStore from '@/app/(home)/store';
 import { paths } from '@/shared/constants';
-import { Link } from '@/shared/ui';
+import { Button, Link } from '@/shared/ui';
 
 const navItems = () => {
+    const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
+    const animations = homePagesStore.use.animations();
+    const location = homePagesStore.use.location();
+
+    const goToMain = async () => {
+        animations.set({ variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } });
+        location.set({ page: 'MAIN', url: paths.home.MAIN });
+    };
+
     return [
         {
             id: 0,
@@ -17,11 +31,7 @@ const navItems = () => {
         },
         {
             id: 3,
-            element: (
-                // <SetHomePageCoords from={'SERVER'} to={'MAIN'}>
-                <Link href={paths.home.MAIN}>ВУРНУТЬСЯ В МЕНЮ</Link>
-                // </SetHomePageCoords>
-            ),
+            element: <Button onClick={goToMain}>ВЕРНУТЬСЯ НА ГЛАВНУЮ</Button>,
         },
     ];
 };

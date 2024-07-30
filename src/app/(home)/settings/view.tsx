@@ -1,3 +1,5 @@
+import React from 'react';
+
 import { Button } from '@/shared/ui';
 
 import styles from './styles.module.scss';
@@ -6,11 +8,11 @@ interface IProps {
     menuItems: Array<IMenuItem>;
 }
 
-const MainView = (props: IProps) => {
+const SettingsView = (props: IProps) => {
     const { menuItems } = props;
 
     return (
-        <section className={styles.menuPage}>
+        <section className={styles.optionsPage}>
             <div className={styles.menu}>
                 {menuItems.map((i) => (
                     <Button key={i.id} onClick={i.onClick}>
@@ -22,4 +24,4 @@ const MainView = (props: IProps) => {
     );
 };
 
-export default MainView;
+export default SettingsView;

@@ -9,7 +9,7 @@ const FindServerPage = () => {
     const getServer = gameServersApi.getServer();
 
     const handleServerClick = async (id: number) => {
-        // const server = await getServer({ variables: { id } });
+        await getServer({ variables: { id } });
     };
 
     return <FindServerView servers={servers.data?.allServers} handleServerClick={handleServerClick} />;

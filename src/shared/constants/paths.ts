@@ -1,16 +1,16 @@
 export const home = {
     MAIN: `/main`,
     SERVER: `/server`,
-    OPTIONS: `/options`,
+    SETTINGS: `/settings`,
     LOGIN: `/login`,
     REGISTRATION: `/registration`,
 };
 
 export const options = {
-    BASIC: `${home.OPTIONS}/basic`,
-    CONTROL: `${home.OPTIONS}/control`,
-    CHARACTER: `${home.OPTIONS}/character`,
-    WEAPON: `${home.OPTIONS}/weapon`,
+    BASIC: `${home.SETTINGS}/basic`,
+    CONTROL: `${home.SETTINGS}/control`,
+    CHARACTER: `${home.SETTINGS}/character`,
+    WEAPON: `${home.SETTINGS}/weapon`,
 };
 
 export const server = {
@@ -23,5 +23,5 @@ export const game = {
     BATTLEFIELD: `/battlefield`,
 };
 
-export const PrivatePaths = [home.OPTIONS, home.SERVER, home.MAIN, ...Object.keys(options), ...Object.keys(server)];
+export const PrivatePaths = [home.SETTINGS, home.SERVER, home.MAIN, ...Object.keys(options), ...Object.keys(server)];
 export const AuthPaths = [home.LOGIN, home.REGISTRATION];

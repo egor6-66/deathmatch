@@ -1,3 +1,5 @@
+'use client';
+
 import { paths } from '@/shared/constants';
 import { Button, Input, InputTypes, Link } from '@/shared/ui';
 
