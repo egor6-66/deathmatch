@@ -1,10 +1,15 @@
-import { Button } from '@/shared/ui';
+import { ReactNode } from 'react';
 
-import * as ContentSwitcherTypes from './interface';
+import { Button } from '@/shared/ui';
 
 import styles from './styles.module.scss';
 
-const ContentSwitcher = (props: ContentSwitcherTypes.IProps) => {
+interface IProps {
+    items: IMenuItem[];
+    children: ReactNode;
+}
+
+const ContentSwitcher = (props: IProps) => {
     const { items, children } = props;
 
     return (
@@ -22,5 +27,4 @@ const ContentSwitcher = (props: ContentSwitcherTypes.IProps) => {
     );
 };
 
-export type { ContentSwitcherTypes };
 export default ContentSwitcher;

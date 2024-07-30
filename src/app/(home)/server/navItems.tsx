@@ -2,36 +2,37 @@
 
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
+import { paths } from '@/shared/constants';
 import { transitionStore } from '@/shared/stores';
 
 const navItems = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
     const home = transitionStore.use.home();
+    const server = transitionStore.use.server();
 
     const goToMain = async () => {
         home.set({ page: 'MAIN', animations: { variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } } });
-        // homePage.set('MAIN');
     };
 
-    const serverPagesTransition = () => {
-        // serverPagesAnimations.set({ variants: { exit: { opacity: 0 }, animate: { opacity: 1 }, initial: { opacity: 0 } } });
+    const serverPagesTransition = (targetPage: paths.ServerPagesTypes) => {
+        server.set({ page: targetPage, animations: { variants: { exit: { opacity: 0 }, animate: { opacity: 1 }, initial: { opacity: 0 } } } });
     };
 
     return [
         {
             id: 0,
             title: 'МОИ СЕРВЕРА',
-            onClick: serverPagesTransition,
+            onClick: () => serverPagesTransition('MY'),
         },
         {
             id: 1,
             title: 'СОЗДАТЬ СЕРВЕР',
-            onClick: serverPagesTransition,
+            onClick: () => serverPagesTransition('CREATE'),
         },
         {
             id: 2,
             title: 'ПОИСК СЕРВЕРОВ',
-            onClick: serverPagesTransition,
+            onClick: () => serverPagesTransition('FIND'),
         },
         {
             id: 3,
