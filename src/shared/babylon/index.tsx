@@ -1,11 +1,11 @@
 import React, { ReactElement, useEffect, useRef, useState } from 'react';
-import { Camera, Color4, DirectionalLight, Engine, HemisphericLight, PointLight, Scene, SpotLight, UniversalCamera, Vector3 } from '@babylonjs/core';
+import { Camera, Color4, Engine, Scene, UniversalCamera, Vector3 } from '@babylonjs/core';
 
 import '@babylonjs/loaders';
 
 import defaultValues from './default';
 import { IProps } from './interfaces';
-import { createGizmos, smoothMovement } from './utils';
+import { cameraFixed, createGizmos, smoothMovement } from './utils';
 
 const babylon = (props?: Partial<IProps>) => {
     const { cameraOptions, canvas } = props || {};
@@ -39,7 +39,6 @@ const babylon = (props?: Partial<IProps>) => {
                 setCamera(camera);
             }
 
-            // new HemisphericLight('hemi', new Vector3(0, 4, 0), scene);
             engine.runRenderLoop(() => {
                 scene.render();
             });
@@ -54,5 +53,5 @@ const babylon = (props?: Partial<IProps>) => {
     };
 };
 
-export { createGizmos, smoothMovement };
+export { cameraFixed, createGizmos, smoothMovement };
 export default babylon;

@@ -1,5 +1,4 @@
 import { paths } from '@/shared/constants';
-import { SetHomePageCoords } from '@/shared/hoks';
 import Link from '@/shared/ui/link';
 
 import styles from './styles.module.scss';
@@ -15,11 +14,11 @@ const MainView = (props: IProps) => {
         <section className={styles.menuPage}>
             <div className={styles.menu}>
                 {menuItems.map((i) => (
-                    <SetHomePageCoords key={i.id} from={'MAIN'} to={i.payload.page}>
-                        <Link onClick={i.onClick} key={i.id} href={i.payload.path}>
-                            {i.title}
-                        </Link>
-                    </SetHomePageCoords>
+                    // <SetHomePageCoords key={i.id} from={'MAIN'} to={i.payload.page}>
+                    <Link onClick={i.onClick} key={i.id} href={i.payload.path}>
+                        {i.title}
+                    </Link>
+                    // </SetHomePageCoords>
                 ))}
             </div>
         </section>

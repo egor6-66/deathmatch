@@ -1,4 +1,4 @@
-import HomePagesCanvas from './home-pages-canvas';
+import ContentSwitcher from './content-switcher';
 import ServersList from './servers-list';
 
-export { HomePagesCanvas, ServersList };
+export { ContentSwitcher, ServersList };

@@ -3,7 +3,7 @@ import { IProps } from '@/shared/babylon/interfaces';
 const defaultValues: IProps = {
     cameraOptions: {
         type: 'universalCamera',
-        vector: { x: 0, y: 0, z: -7.1 },
+        vector: { x: 0, y: 0, z: -4.1 },
         minZ: 0.05,
         speed: 0.2,
     },

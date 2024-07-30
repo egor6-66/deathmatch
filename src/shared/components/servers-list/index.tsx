@@ -16,8 +16,8 @@ const ServersList = (props: IProps) => {
         <ul className={styles.serversList}>
             {servers?.map((i) => (
                 <li key={i.id} className={styles.item} onClick={() => handleServerClick(i.id)}>
-                    <span>{i.name}</span>
-                    <span>{i.private ? 'ПРИВАТНЫЙ' : 'ОТКРЫТЫЙ'}</span>
+                    <span className={styles.name}>{i.name}</span>
+                    <span className={styles.private}>{i.private ? 'ПРИВАТНЫЙ' : 'ОТКРЫТЫЙ'}</span>
                 </li>
             ))}
         </ul>

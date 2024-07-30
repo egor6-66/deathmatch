@@ -1,50 +1,27 @@
-import { Scene } from '@babylonjs/core';
+import { Animation, Camera, Scene, Vector3 } from '@babylonjs/core';
 
 interface ISmooth {
     scene: Scene;
-    speed: number;
+    camera: Camera;
+    frameEnd: number;
     coords: ICoords;
 }
 
 function smoothMovement(props: ISmooth) {
-    const { speed = 0.8, scene, coords } = props;
+    const { camera, frameEnd = 60, scene, coords } = props;
+    const fps = 60;
+    const slideFrames: any[] = [];
 
-    const done: Record<string, boolean> = { x: false, y: false };
+    const slideAnim = new Animation('slideAnim', 'position', fps, Animation.ANIMATIONTYPE_VECTOR3, Animation.ANIMATIONLOOPMODE_CONSTANT);
 
-    const methods = { x: '', y: '' } as Record<string, string>;
+    const currentPos = camera.position;
+    slideFrames.push({ frame: 0, value: new Vector3(currentPos.x, currentPos.y, currentPos.z) });
+    slideFrames.push({ frame: frameEnd, value: new Vector3(coords.x, coords.y, coords.z) });
 
-    const observer = scene.onBeforeRenderObservable!.add((eventData) => {
-        const camera = eventData.cameras[0];
-        const cameraPosition = camera.position as any;
+    slideAnim.setKeys(slideFrames);
+    camera.animations.push(slideAnim);
 
-        if (coords) {
-            Object.entries(coords).forEach(([key, targetPosition]) => {
-                const currentPosition = cameraPosition[key];
-
-                if (!methods[key]) {
-                    methods[key] = currentPosition > targetPosition ? 'dec' : 'inc';
-                }
-
-                if (methods[key] === 'dec') {
-                    if (currentPosition > targetPosition) {
-                        cameraPosition[key] -= speed / 10;
-                    } else {
-                        done[key] = true;
-                    }
-                } else {
-                    if (currentPosition < targetPosition) {
-                        cameraPosition[key] += speed / 10;
-                    } else {
-                        done[key] = true;
-                    }
-                }
-            });
-        }
-
-        if (done.x && done.y) {
-            scene?.onBeforeRenderObservable.remove(observer);
-        }
-    });
+    scene.beginAnimation(camera, 0, frameEnd);
 }
 
 export default smoothMovement;
