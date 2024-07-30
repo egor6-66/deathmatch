@@ -1,3 +1,5 @@
+import { paths } from '@/shared/constants/index';
+
 export const home = {
     MAIN: `/main`,
     SERVER: `/server`,
@@ -22,6 +24,11 @@ export const server = {
 export const game = {
     BATTLEFIELD: `/battlefield`,
 };
+
+type HomePagesTypes = keyof typeof paths.home;
+type ServerPagesTypes = keyof typeof paths.server;
+
+export type { HomePagesTypes, ServerPagesTypes };
 
 export const PrivatePaths = [home.SETTINGS, home.SERVER, home.MAIN, ...Object.keys(options), ...Object.keys(server)];
 export const AuthPaths = [home.LOGIN, home.REGISTRATION];

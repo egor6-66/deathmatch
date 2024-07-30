@@ -3,18 +3,19 @@
 import React from 'react';
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import homePagesStore from '../store';
+import { transitionStore } from '@/shared/stores';
 
 import OptionsView from './view';
 
 const OptionsPage = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
-    const animations = homePagesStore.use.animations();
-    const page = homePagesStore.use.page();
+    const home = transitionStore.use.home();
 
     const goToMain = () => {
-        animations.set({ variants: { exit: { x: width }, animate: { x: 0 }, initial: { x: -width } } });
-        page.set('MAIN');
+        home.set({
+            page: 'MAIN',
+            animations: { variants: { exit: { x: width }, animate: { x: 0 }, initial: { x: -width } } },
+        });
     };
 
     const menuItems: Array<IMenuItem> = [{ id: 2, title: 'ВЕРНУТЬСЯ НА ГЛАВНУЮ', onClick: goToMain }];

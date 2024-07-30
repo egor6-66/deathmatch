@@ -2,9 +2,9 @@
 
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import homePagesStore from '@/app/(home)/store';
 import { paths } from '@/shared/constants';
 import { authApi } from '@/shared/gql';
+import { transitionStore } from '@/shared/stores';
 
 import MainView from './view';
 
@@ -13,18 +13,21 @@ const MainPage = () => {
 
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
-    const animations = homePagesStore.use.animations();
-    const page = homePagesStore.use.page();
+    const home = transitionStore.use.home();
 
     const handleTransition = (targetPage: keyof typeof paths.home, exit: number, initial: number) => {
-        animations.set({ variants: { exit: { x: exit }, animate: { x: 0 }, initial: { x: initial } } });
-        page.set(targetPage);
+        home.set({
+            page: targetPage,
+            animations: { variants: { exit: { x: exit }, animate: { x: 0 }, initial: { x: initial } } },
+        });
     };
 
     const handleLogout = async () => {
         await logout();
-        animations.set({ variants: { exit: { x: -width, y: -height }, animate: { x: 0, y: 0 }, initial: { x: width, y: height } } });
-        page.set('LOGIN');
+        home.set({
+            page: 'LOGIN',
+            animations: { variants: { exit: { x: -width, y: -height }, animate: { x: 0, y: 0 }, initial: { x: width, y: height } } },
+        });
     };
 
     const menuItems: Array<IMenuItem> = [

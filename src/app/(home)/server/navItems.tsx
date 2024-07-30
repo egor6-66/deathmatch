@@ -2,31 +2,36 @@
 
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import homePagesStore from '@/app/(home)/store';
+import { transitionStore } from '@/shared/stores';
 
 const navItems = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
-    const animations = homePagesStore.use.animations();
-    const page = homePagesStore.use.page();
+    const home = transitionStore.use.home();
 
     const goToMain = async () => {
-        animations.set({ variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } });
-        page.set('MAIN');
+        home.set({ page: 'MAIN', animations: { variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } } });
+        // homePage.set('MAIN');
+    };
+
+    const serverPagesTransition = () => {
+        // serverPagesAnimations.set({ variants: { exit: { opacity: 0 }, animate: { opacity: 1 }, initial: { opacity: 0 } } });
     };
 
     return [
         {
             id: 0,
             title: 'МОИ СЕРВЕРА',
-            onClick: () => '',
+            onClick: serverPagesTransition,
         },
         {
             id: 1,
             title: 'СОЗДАТЬ СЕРВЕР',
+            onClick: serverPagesTransition,
         },
         {
             id: 2,
             title: 'ПОИСК СЕРВЕРОВ',
+            onClick: serverPagesTransition,
         },
         {
             id: 3,
