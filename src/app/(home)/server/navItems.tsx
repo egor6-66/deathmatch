@@ -3,37 +3,37 @@
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
 import homePagesStore from '@/app/(home)/store';
-import { paths } from '@/shared/constants';
-import { Button, Link } from '@/shared/ui';
 
 const navItems = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
     const animations = homePagesStore.use.animations();
-    const location = homePagesStore.use.location();
+    const page = homePagesStore.use.page();
 
     const goToMain = async () => {
         animations.set({ variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } });
-        location.set({ page: 'MAIN', url: paths.home.MAIN });
+        page.set('MAIN');
     };
 
     return [
         {
             id: 0,
-            element: <Link href={paths.server.MY}>МОИ СЕРВЕРА</Link>,
+            title: 'МОИ СЕРВЕРА',
+            onClick: () => '',
         },
         {
             id: 1,
-            element: <Link href={paths.server.CREATE}>СОЗДАТЬ СЕРВЕР</Link>,
+            title: 'СОЗДАТЬ СЕРВЕР',
         },
         {
             id: 2,
-            element: <Link href={paths.server.FIND}>ПОИСК СЕРВЕРОВ</Link>,
+            title: 'ПОИСК СЕРВЕРОВ',
         },
         {
             id: 3,
-            element: <Button onClick={goToMain}>ВЕРНУТЬСЯ НА ГЛАВНУЮ</Button>,
+            title: 'ВЕРНУТЬСЯ НА ГЛАВНУЮ',
+            onClick: goToMain,
         },
-    ];
+    ] as IMenuItem[];
 };
 
 export default navItems;

@@ -3,6 +3,7 @@
 import { ReactNode, useEffect, useState } from 'react';
 import { usePathname } from 'next/navigation';
 
+import { paths } from '@/shared/constants';
 import { usePageTransition } from '@/shared/hooks';
 import { Loading } from '@/shared/ui';
 
@@ -16,12 +17,11 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
     const [wallIsReady, setWallIsReady] = useState(false);
 
     const animations = homePagesStore.use.animations();
-    const location = homePagesStore.use.location();
-    const page = location.value?.page || pathname.split('/')[1].toUpperCase();
+    const page = homePagesStore.use.page().value || pathname.split('/')[1].toUpperCase();
 
     useEffect(() => {
-        location.value?.url && onRoute({ href: location.value.url });
-    }, [location.value?.url]);
+        onRoute({ href: paths.home[page] });
+    }, [page]);
 
     return (
         <>

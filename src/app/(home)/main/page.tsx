@@ -14,22 +14,22 @@ const MainPage = () => {
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
     const animations = homePagesStore.use.animations();
-    const location = homePagesStore.use.location();
+    const page = homePagesStore.use.page();
 
-    const handleTransition = (page: keyof typeof paths.home, url: string, exit: number, initial: number) => {
+    const handleTransition = (targetPage: keyof typeof paths.home, exit: number, initial: number) => {
         animations.set({ variants: { exit: { x: exit }, animate: { x: 0 }, initial: { x: initial } } });
-        location.set({ page, url });
+        page.set(targetPage);
     };
 
     const handleLogout = async () => {
         await logout();
-        animations.set({ variants: { exit: { x: -width, y: -height }, animate: { x: 0 }, initial: { x: width, y: height } } });
-        location.set({ page: 'LOGIN', url: paths.home.LOGIN });
+        animations.set({ variants: { exit: { x: -width, y: -height }, animate: { x: 0, y: 0 }, initial: { x: width, y: height } } });
+        page.set('LOGIN');
     };
 
     const menuItems: Array<IMenuItem> = [
-        { id: 0, title: 'Сервер', onClick: () => handleTransition('SERVER', paths.server.CREATE, width, -width) },
-        { id: 1, title: 'Настройки', onClick: () => handleTransition('SETTINGS', paths.home.SETTINGS, -width, width) },
+        { id: 0, title: 'Сервер', onClick: () => handleTransition('SERVER', width, -width) },
+        { id: 1, title: 'Настройки', onClick: () => handleTransition('SETTINGS', -width, width) },
         { id: 2, title: 'Выход', onClick: handleLogout },
     ];
 

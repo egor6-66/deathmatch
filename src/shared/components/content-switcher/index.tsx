@@ -1,3 +1,5 @@
+import { Button } from '@/shared/ui';
+
 import * as ContentSwitcherTypes from './interface';
 
 import styles from './styles.module.scss';
@@ -9,7 +11,9 @@ const ContentSwitcher = (props: ContentSwitcherTypes.IProps) => {
         <div className={styles.contentSwitcher}>
             <nav className={styles.nav}>
                 {items.map((i) => (
-                    <li key={i.id}>{i.element}</li>
+                    <Button key={i.id} onClick={i.onClick}>
+                        {i.title}
+                    </Button>
                 ))}
             </nav>
             <div className={styles.border}></div>

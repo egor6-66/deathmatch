@@ -6,16 +6,12 @@ import { paths } from '@/shared/constants';
 type Pages = keyof typeof paths.home;
 
 interface IStore {
-    location: {
-        page: Pages;
-        url: string;
-    };
-
+    page: Pages;
     animations: MotionProps;
 }
 
 const homePagesStore = useZustand<IStore>({
-    keys: ['location', 'animations'],
+    keys: ['page', 'animations'],
 });
 
 export default homePagesStore;
