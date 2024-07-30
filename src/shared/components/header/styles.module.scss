@@ -5,8 +5,5 @@
   @include mixins.box-size(100%, 40px);
   @include mixins.flex(center, center);
   border-bottom: 2px solid red;
-  position: fixed;
-  top: 0;
-  left: 0;
   color: var(--text-primary);
 }

@@ -18,7 +18,7 @@ const CreateServerPage = () => {
     const handleCreateServer = async () => {
         try {
             const res = await createServer({ password: password.value, name: name.value });
-            router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.name}`);
+            router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.url}`);
         } catch (e) {
             return null;
         }

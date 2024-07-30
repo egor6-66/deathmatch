@@ -18,6 +18,12 @@ export async function middleware(request: NextRequest) {
             return NextResponse.redirect(new URL(paths.home.MAIN, request.url));
         }
     }
+
+    if (request.url.includes(paths.game.BATTLEFIELD)) {
+        if (!accessToken && !refreshToken) {
+            return NextResponse.redirect(new URL(paths.home.LOGIN, request.url));
+        }
+    }
 }
 export const config = {
     matcher: '/:path*',

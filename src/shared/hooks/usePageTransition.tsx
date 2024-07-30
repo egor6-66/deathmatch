@@ -1,4 +1,4 @@
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { CSSProperties, ReactNode, useCallback, useState } from 'react';
 import { motion, MotionProps, useAnimationControls } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -29,10 +29,10 @@ function usePageTransition() {
     );
 
     const Transition = useCallback((props: ITransitionProps) => {
-        const { children, ...rest } = props;
+        const { children, style, ...rest } = props;
 
         return (
-            <motion.main style={{ width: '100%', height: '100%' }} animate={controls} {...rest} {...animations}>
+            <motion.main style={{ width: '100%', height: '100%', ...style }} animate={controls} {...rest} {...animations}>
                 {children}
             </motion.main>
         );

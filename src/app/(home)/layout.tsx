@@ -28,7 +28,7 @@ const HomeLayout = ({ children }: { children: ReactNode }) => {
                 DEATHMATCH
             </Loading>
             <Header />
-            <Transition transition={{ duration: 0.35 }} {...home.value?.animations}>
+            <Transition style={{ height: 'calc(100% - 40px)' }} transition={{ duration: 0.35 }} {...home.value?.animations}>
                 {children}
             </Transition>
             <Canvas page={page as paths.HomePagesTypes} setWallIsReady={setWallIsReady} />
