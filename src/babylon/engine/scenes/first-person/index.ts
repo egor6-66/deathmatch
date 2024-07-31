@@ -1,4 +1,4 @@
-import { Camera, DirectionalLight, Engine, HemisphericLight, Matrix, Scene, Vector3 } from '@babylonjs/core';
+import { DirectionalLight, Engine, HemisphericLight, Scene, Vector3 } from '@babylonjs/core';
 
 import { IOptions } from '../../interfeces';
 

@@ -1,2 +1,2 @@
-## 🔫JS GAME🔫
+## 🔫JS GAME CLIENT🔫
 

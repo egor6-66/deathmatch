@@ -1,15 +1,15 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
+// import { useRouter } from 'next/navigation';
 
-import { paths } from '@/shared/constants';
+// import { paths } from '@/shared/constants';
 import { gameServersApi } from '@/shared/gql';
 import { Input } from '@/shared/ui';
 
 import CreateServerView from './view';
 
 const CreateServerPage = () => {
-    const router = useRouter();
+    // const router = useRouter();
     const createServer = gameServersApi.createServer();
 
     const name = Input.use({ cut: /\s/ });
@@ -17,8 +17,8 @@ const CreateServerPage = () => {
 
     const handleCreateServer = async () => {
         try {
-            const res = await createServer({ password: password.value, name: name.value });
-            router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.url}`);
+            await createServer({ password: password.value, name: name.value });
+            // router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.url}`);
         } catch (e) {
             return null;
         }

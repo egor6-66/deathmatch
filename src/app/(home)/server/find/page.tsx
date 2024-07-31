@@ -10,7 +10,7 @@ import FindServerView from './view';
 const FindServerPage = () => {
     const router = useRouter();
 
-    const servers = gameServersApi.getAllServers();
+    const servers = gameServersApi.allServers().query();
     const getServer = gameServersApi.getServer();
 
     const handleServerClick = async (id: number) => {
@@ -18,7 +18,7 @@ const FindServerPage = () => {
         router.replace(`${paths.game.BATTLEFIELD}/${res.data?.server.url}`);
     };
 
-    return <FindServerView servers={servers.data?.allServers} handleServerClick={handleServerClick} />;
+    return <FindServerView servers={servers?.data?.allServers} handleServerClick={handleServerClick} />;
 };
 
 export default FindServerPage;

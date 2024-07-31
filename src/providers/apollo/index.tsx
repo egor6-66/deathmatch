@@ -6,11 +6,11 @@ import { ApolloLink } from '@apollo/client';
 
 import cache from './cache';
 import errorLink from './errorLink';
-import httpLink from './httpLink';
+import link from './link';
 
 export const client = new Apollo.ApolloClient({
     cache: cache,
-    link: ApolloLink.from([errorLink, httpLink]),
+    link: ApolloLink.from([errorLink, link]),
 });
 
 const ApolloProvider = ({ children }: { children: ReactNode }) => {

@@ -30,5 +30,6 @@ type ServerPagesTypes = keyof typeof paths.server;
 
 export type { HomePagesTypes, ServerPagesTypes };
 
-export const PrivatePaths = [home.SETTINGS, home.SERVER, home.MAIN, ...Object.keys(options), ...Object.keys(server)];
+export const PrivateKeys = ['MAIN', 'SERVER', 'SETTINGS'];
+export const PrivatePaths = [home.SETTINGS, home.SERVER, home.MAIN, ...Object.values(options), ...Object.values(server)];
 export const AuthPaths = [home.LOGIN, home.REGISTRATION];

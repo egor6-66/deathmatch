@@ -1,5 +1,6 @@
 import { configMediaQuery, useElementSizeObserver, useSizeObserver, useWindowSizeObserver } from 'react-screen-hooks';
 
+import * as useApollo from './useApollo';
 import useDebounce from './useDebounce';
 import useFirstMount from './useFirstMount';
 import usePageTransition from './usePageTransition';
@@ -9,6 +10,7 @@ import useUpdateEffect from './useUpdateEffect';
 
 export {
     configMediaQuery,
+    useApollo,
     useDebounce,
     useElementSizeObserver,
     useFirstMount,

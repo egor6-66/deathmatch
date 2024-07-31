@@ -1,4 +1,4 @@
-import { Matrix, Vector3 } from '@babylonjs/core';
+// import { Matrix, Vector3 } from '@babylonjs/core';
 
 function getPixelSize() {
     // if (!engine || !camera || !scene) return;
@@ -25,3 +25,5 @@ function getPixelSize() {
     // //console.log("maxY-minY",(maxY-minY));
     // return { x: maxX - minX, y: maxY - minY };
 }
+
+export default getPixelSize;

@@ -1,4 +1,3 @@
-import { MouseEvent } from 'react';
 import classNames from 'classnames';
 import { default as NextLink } from 'next/link';
 import { usePathname } from 'next/navigation';

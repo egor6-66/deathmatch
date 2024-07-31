@@ -16,10 +16,6 @@ interface IStore {
 
 const transitionStore = useZustand<IStore>({
     keys: ['home', 'server'],
-    forStorage: {
-        storageName: 'routing',
-        all: true,
-    },
 });
 
 export default transitionStore;

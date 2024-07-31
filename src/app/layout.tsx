@@ -2,7 +2,7 @@ import { ReactNode } from 'react';
 import type { Metadata } from 'next';
 import { Noto_Sans } from 'next/font/google';
 
-import { ApolloProvider } from '@/providers';
+import { ApolloProvider, SubscriptionsProvider } from '@/providers';
 
 import '@/css/index.css';
 
@@ -23,7 +23,9 @@ const RootLayout = ({ children }: Readonly<{ children: ReactNode }>) => {
     return (
         <html lang="en" data-theme={'blood'}>
             <body className={ns.className} suppressHydrationWarning>
-                <ApolloProvider>{children}</ApolloProvider>
+                <ApolloProvider>
+                    <SubscriptionsProvider>{children}</SubscriptionsProvider>
+                </ApolloProvider>
             </body>
         </html>
     );
