@@ -16,12 +16,9 @@ const CreateServerPage = () => {
     const password = Input.use({ cut: /\s/ });
 
     const handleCreateServer = async () => {
-        try {
-            await createServer({ password: password.value, name: name.value });
-            // router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.url}`);
-        } catch (e) {
-            return null;
-        }
+        await createServer({ password: password.value, name: name.value });
+
+        // router.replace(`${paths.game.BATTLEFIELD}/${res.data?.newServer.url}`);
     };
 
     return <CreateServerView inputs={{ name, password }} handleCreateServer={handleCreateServer} />;

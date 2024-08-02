@@ -4,13 +4,13 @@ import { client } from '@/providers/apollo';
 interface IQueryWithSub {
     queryName: string;
     subName: string;
-    fields: string[];
+    fields: string;
 }
 
 const queryWithSub = <T, K>(props: IQueryWithSub) => {
     const { queryName, subName, fields } = props;
     const queryTemplate = `query ${queryName} {${queryName} {${fields}}}`;
-    const subTemplate = `subscription ${subName} {${subName} { ${fields}}}`;
+    const subTemplate = `subscription ${subName} {${subName} {${fields}}}`;
 
     const sub = (cb?: (data: K) => void) => {
         client.subscribe({ query: gql(subTemplate) }).subscribe({

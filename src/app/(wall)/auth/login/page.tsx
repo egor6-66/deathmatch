@@ -14,7 +14,7 @@ const LoginPage = () => {
 
     const [error, setError] = useState('');
 
-    const home = transitionStore.use.home();
+    const wall = transitionStore.use.wall();
 
     const nickname = Input.use({ cut: /\s/ });
     const password = Input.use({ cut: /\s/ });
@@ -26,7 +26,7 @@ const LoginPage = () => {
             if (nickname.value.length < 6) return nickname.setError('Слишком короткий nickname');
             if (password.value.length < 6) return password.setError('Слишком короткий password');
             await login({ nickname: nickname.value, password: password.value });
-            home.set({
+            wall.set({
                 page: 'MAIN',
                 animations: { variants: { exit: { x: width, y: height }, animate: { x: 0, y: 0 }, initial: { x: -width, y: -height } } },
             });
@@ -36,7 +36,7 @@ const LoginPage = () => {
     };
 
     const goToRegistration = () => {
-        home.set({
+        wall.set({
             page: 'REGISTRATION',
             animations: { variants: { exit: { x: width }, animate: { x: 0 }, initial: { x: -width } } },
         });

@@ -13,10 +13,10 @@ const MainPage = () => {
 
     const { width, height } = useWindowSizeObserver({ debounceDelay: 1000 });
 
-    const home = transitionStore.use.home();
+    const wall = transitionStore.use.wall();
 
-    const handleTransition = (targetPage: keyof typeof paths.home, exit: number, initial: number) => {
-        home.set({
+    const handleTransition = (targetPage: paths.HomePagesTypes, exit: number, initial: number) => {
+        wall.set({
             page: targetPage,
             animations: { variants: { exit: { x: exit }, animate: { x: 0 }, initial: { x: initial } } },
         });
@@ -24,7 +24,7 @@ const MainPage = () => {
 
     const handleLogout = async () => {
         await logout();
-        home.set({
+        wall.set({
             page: 'LOGIN',
             animations: { variants: { exit: { x: -width, y: -height }, animate: { x: 0, y: 0 }, initial: { x: width, y: height } } },
         });

@@ -1,18 +1,17 @@
-import { paths } from '@/shared/constants/index';
-
-export const home = {
-    MAIN: `/main`,
-    SERVER: `/server`,
-    SETTINGS: `/settings`,
-    LOGIN: `/login`,
-    REGISTRATION: `/registration`,
+export const mainWall = {
+    AUTH: '/auth',
+    HOME: '/home',
 };
 
-export const options = {
-    BASIC: `${home.SETTINGS}/basic`,
-    CONTROL: `${home.SETTINGS}/control`,
-    CHARACTER: `${home.SETTINGS}/character`,
-    WEAPON: `${home.SETTINGS}/weapon`,
+export const home = {
+    MAIN: `${mainWall.HOME}/main`,
+    SERVER: `${mainWall.HOME}/server`,
+    SETTINGS: `${mainWall.HOME}/settings`,
+};
+
+export const auth = {
+    LOGIN: `${mainWall.AUTH}/login`,
+    REGISTRATION: `${mainWall.AUTH}/registration`,
 };
 
 export const server = {
@@ -25,11 +24,14 @@ export const game = {
     BATTLEFIELD: `/battlefield`,
 };
 
-type HomePagesTypes = keyof typeof paths.home;
-type ServerPagesTypes = keyof typeof paths.server;
+const getValues = (obj: object) => Object.values(obj);
 
-export type { HomePagesTypes, ServerPagesTypes };
+export const privatePaths = [...getValues(home), ...getValues(server), ...getValues(game)];
+export const publicPaths = [...getValues(auth)];
 
-export const PrivateKeys = ['MAIN', 'SERVER', 'SETTINGS'];
-export const PrivatePaths = [home.SETTINGS, home.SERVER, home.MAIN, ...Object.values(options), ...Object.values(server)];
-export const AuthPaths = [home.LOGIN, home.REGISTRATION];
+type MainWallPagesTypes = keyof typeof mainWall;
+type HomePagesTypes = keyof typeof home;
+type AuthPagesTypes = keyof typeof auth;
+type ServerPagesTypes = keyof typeof server;
+
+export type { AuthPagesTypes, HomePagesTypes, MainWallPagesTypes, ServerPagesTypes };

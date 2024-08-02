@@ -7,11 +7,11 @@ import { transitionStore } from '@/shared/stores';
 
 const navItems = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
-    const home = transitionStore.use.home();
+    const wall = transitionStore.use.wall();
     const server = transitionStore.use.server();
 
     const goToMain = async () => {
-        home.set({ page: 'MAIN', animations: { variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } } });
+        wall.set({ page: 'MAIN', animations: { variants: { exit: { x: -width }, animate: { x: 0 }, initial: { x: width } } } });
     };
 
     const serverPagesTransition = (targetPage: paths.ServerPagesTypes) => {

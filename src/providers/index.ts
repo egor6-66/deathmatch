@@ -1,4 +1,4 @@
+import HomeSubProvider from './subscriptions/home';
 import ApolloProvider from './apollo';
-import SubscriptionsProvider from './subscriptions';
 
-export { ApolloProvider, SubscriptionsProvider };
+export { ApolloProvider, HomeSubProvider };

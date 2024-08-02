@@ -1,3 +1,5 @@
+'use client';
+
 import { useCallback, useEffect, useRef } from 'react';
 
 export default function useTimeoutFn(fn: () => void, ms = 0) {

@@ -1,3 +1,5 @@
+'use client';
+
 import React, { ReactNode, useCallback, useState } from 'react';
 import { motion, MotionProps, useAnimationControls } from 'framer-motion';
 import { useRouter } from 'next/navigation';

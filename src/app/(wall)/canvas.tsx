@@ -16,7 +16,7 @@ const twoLvl = -0.4;
 const oneLvl = -2.8;
 const z = -7.7;
 
-type Pages = keyof typeof paths.home;
+type Pages = paths.HomePagesTypes | paths.AuthPagesTypes;
 
 const coords: Record<Pages, ICoords> = {
     SERVER: { x: -3, y: twoLvl, z },

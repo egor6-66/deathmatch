@@ -9,10 +9,10 @@ import OptionsView from './view';
 
 const OptionsPage = () => {
     const { width } = useWindowSizeObserver({ debounceDelay: 1000 });
-    const home = transitionStore.use.home();
+    const wall = transitionStore.use.wall();
 
     const goToMain = () => {
-        home.set({
+        wall.set({
             page: 'MAIN',
             animations: { variants: { exit: { x: width }, animate: { x: 0 }, initial: { x: -width } } },
         });
