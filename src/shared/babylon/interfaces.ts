@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 export interface IProps {
     cameraOptions: {
         type: 'universalCamera';
-        vector: ICoords;
+        vector: IVector3;
         minZ: number;
         speed: number;
     };

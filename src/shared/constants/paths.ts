@@ -1,23 +1,23 @@
-export const mainWall = {
+export const wall = {
     AUTH: '/auth',
     HOME: '/home',
 };
 
+export const server = {
+    CREATE_SERVER: `${wall.HOME}/create_server`,
+    FIND_SERVERS: `${wall.HOME}/find_servers`,
+    MY_SERVERS: `${wall.HOME}/my_servers`,
+};
+
 export const home = {
-    MAIN: `${mainWall.HOME}/main`,
-    SERVER: `${mainWall.HOME}/server`,
-    SETTINGS: `${mainWall.HOME}/settings`,
+    MAIN: `${wall.HOME}/main`,
+    SETTINGS: `${wall.HOME}/settings`,
+    ...server,
 };
 
 export const auth = {
-    LOGIN: `${mainWall.AUTH}/login`,
-    REGISTRATION: `${mainWall.AUTH}/registration`,
-};
-
-export const server = {
-    CREATE: `${home.SERVER}/create`,
-    FIND: `${home.SERVER}/find`,
-    MY: `${home.SERVER}/my`,
+    LOGIN: `${wall.AUTH}/login`,
+    REGISTRATION: `${wall.AUTH}/registration`,
 };
 
 export const game = {
@@ -26,12 +26,12 @@ export const game = {
 
 const getValues = (obj: object) => Object.values(obj);
 
-export const privatePaths = [...getValues(home), ...getValues(server), ...getValues(game)];
+export const privatePaths = [...getValues(home), ...getValues(game)];
 export const publicPaths = [...getValues(auth)];
 
-type MainWallPagesTypes = keyof typeof mainWall;
+type WallPagesTypes = keyof typeof wall;
 type HomePagesTypes = keyof typeof home;
 type AuthPagesTypes = keyof typeof auth;
 type ServerPagesTypes = keyof typeof server;
 
-export type { AuthPagesTypes, HomePagesTypes, MainWallPagesTypes, ServerPagesTypes };
+export type { AuthPagesTypes, HomePagesTypes, ServerPagesTypes, WallPagesTypes };

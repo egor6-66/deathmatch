@@ -4,7 +4,7 @@ interface ISmooth {
     scene: Scene;
     camera: Camera;
     frameEnd: number;
-    coords: ICoords;
+    coords: IVector3;
 }
 
 function smoothMovement(props: ISmooth) {

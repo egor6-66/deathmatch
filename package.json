@@ -24,6 +24,7 @@
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^11.3.2",
+    "freeice": "^2.2.2",
     "next": "14.2.5",
     "or": "^0.2.0",
     "react": "^18",

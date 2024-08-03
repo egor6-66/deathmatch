@@ -7,7 +7,7 @@ declare interface IMenuItem<T = any> {
     onClick?: () => void;
 }
 
-declare interface ICoords {
+declare interface IVector3 {
     x?: number;
     y?: number;
     z?: number;

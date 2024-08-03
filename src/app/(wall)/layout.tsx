@@ -2,15 +2,15 @@
 
 import { ReactNode, useState } from 'react';
 
-import { transitionStore } from '@/shared/stores';
 import { Loading } from '@/shared/ui';
 
-import Canvas from './canvas';
+import Canvas from './_components/canvas';
+import { transitionStore } from './_utils';
 
 const WallLayout = ({ children }: { children: ReactNode }) => {
     const [wallIsReady, setWallIsReady] = useState(false);
 
-    const wall = transitionStore.use.wall();
+    const wall = transitionStore.use.wall().value;
 
     return (
         <>
@@ -18,7 +18,7 @@ const WallLayout = ({ children }: { children: ReactNode }) => {
                 DEATHMATCH
             </Loading>
             {children}
-            <Canvas page={wall.value.page} setWallIsReady={setWallIsReady} />
+            <Canvas page={wall?.page} setWallIsReady={setWallIsReady} />
         </>
     );
 };

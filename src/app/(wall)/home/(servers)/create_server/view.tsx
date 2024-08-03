@@ -20,8 +20,12 @@ const CreateServerView = (props: IProps) => {
                 <Input attrs={{ ...inputs.password.inputAttrs, placeholder: 'SERVER PASSWORD' }} />
             </div>
             <div className={styles.map}>map</div>
-            <Button disabled={!inputs.name.value} style={{ width: '100%' }} onClick={handleCreateServer}>
-                Создать
+            <Button
+                // disabled={!inputs.name.value}
+                style={{ width: '100%' }}
+                onClick={handleCreateServer}
+            >
+                Начать
             </Button>
         </div>
     );

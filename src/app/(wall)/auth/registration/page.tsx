@@ -3,8 +3,9 @@
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
 import { authApi } from '@/shared/gql';
-import { transitionStore } from '@/shared/stores';
 import { Input } from '@/shared/ui';
+
+import { transitionStore } from '../../_utils';
 
 import RegistrationView from './view';
 

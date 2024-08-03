@@ -9,6 +9,8 @@
   @include media.width-to(lg) {
     @include mixins.flex-column();
   }
+min-height: 100%;
+
 
   .nav {
     @include mixins.box-size(300px, 100%);

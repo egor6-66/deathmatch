@@ -4,7 +4,8 @@ import { useWindowSizeObserver } from 'react-screen-hooks';
 
 import { paths } from '@/shared/constants';
 import { authApi } from '@/shared/gql';
-import { transitionStore } from '@/shared/stores';
+
+import { transitionStore } from '../../_utils';
 
 import MainView from './view';
 
@@ -31,7 +32,7 @@ const MainPage = () => {
     };
 
     const menuItems: Array<IMenuItem> = [
-        { id: 0, title: 'Сервер', onClick: () => handleTransition('SERVER', width, -width) },
+        { id: 0, title: 'Сервер', onClick: () => handleTransition('CREATE_SERVER', width, -width) },
         { id: 1, title: 'Настройки', onClick: () => handleTransition('SETTINGS', -width, width) },
         { id: 2, title: 'Выход', onClick: handleLogout },
     ];

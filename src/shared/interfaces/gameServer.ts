@@ -1,9 +1,15 @@
+import { IUser } from './user';
+
 interface IGameServer {
     id: number;
     name: string;
     private: boolean;
-    url: string;
     password: string;
+    usersCount: number;
+    owner: IUser;
+    users: IUser[];
 }
 
-export type { IGameServer };
+type WithOutFields<T extends keyof IGameServer> = Omit<IGameServer, T>;
+
+export type { IGameServer, WithOutFields };

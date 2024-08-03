@@ -1,0 +1,7 @@
+@use '@/css/mixins';
+
+.uniqueServerModal {
+  @include mixins.box-size(200px, 300px);
+  @include mixins.flex-column;
+  overflow-y: auto;
+}

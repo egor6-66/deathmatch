@@ -3,7 +3,7 @@
 import React from 'react';
 import { useWindowSizeObserver } from 'react-screen-hooks';
 
-import { transitionStore } from '@/shared/stores';
+import { transitionStore } from '../../_utils';
 
 import OptionsView from './view';
 

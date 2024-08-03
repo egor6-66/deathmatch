@@ -1,15 +1,18 @@
 'use client';
 
+import { useRouter } from 'next/navigation';
+
+import { paths } from '@/shared/constants';
 import { gameServersApi } from '@/shared/gql';
 
 import MyServersView from './view';
 
 const MyServersPage = () => {
+    const router = useRouter();
     const viewerServers = gameServersApi.getViewerServers();
-    const getServer = gameServersApi.getServer();
 
     const handleServerClick = async (id: number) => {
-        await getServer({ variables: { id } });
+        router.push(`${paths.game.BATTLEFIELD}/${id}`);
     };
 
     return <MyServersView servers={viewerServers.data?.viewerServers} handleServerClick={handleServerClick} />;

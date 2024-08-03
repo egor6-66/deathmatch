@@ -1,4 +1,4 @@
-import React, { useEffect, useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { HemisphericLight, SceneLoader, Vector3 } from '@babylonjs/core';
 
 import babylon, { cameraFixed, smoothMovement } from '@/shared/babylon';
@@ -7,26 +7,23 @@ import { useFirstMount } from '@/shared/hooks';
 
 import '@babylonjs/loaders';
 
-interface ICoords {
-    x: number;
-    y: number;
-    z: number;
-}
 const twoLvl = -0.4;
 const oneLvl = -2.8;
 const z = -7.7;
 
-type Pages = paths.HomePagesTypes | paths.AuthPagesTypes;
+type Page = paths.HomePagesTypes | paths.AuthPagesTypes;
 
-const coords: Record<Pages, ICoords> = {
-    SERVER: { x: -3, y: twoLvl, z },
+const canvasCoords: Record<Page, IVector3> = {
+    MY_SERVERS: { x: -3, y: twoLvl, z },
+    FIND_SERVERS: { x: -3, y: twoLvl, z },
+    CREATE_SERVER: { x: -3, y: twoLvl, z },
     MAIN: { x: 0, y: twoLvl, z },
     SETTINGS: { x: 3, y: twoLvl, z },
     LOGIN: { x: 1.9, y: oneLvl, z },
     REGISTRATION: { x: -1.9, y: oneLvl, z },
 };
 
-const Canvas = ({ page, setWallIsReady }: { page: Pages; setWallIsReady: (value: boolean) => void }) => {
+const Canvas = ({ page, setWallIsReady }: { page?: Page; setWallIsReady: (value: boolean) => void }) => {
     const { BabylonCanvas, scene, camera, engine } = babylon();
 
     const isFirstMount = useFirstMount();
@@ -34,10 +31,12 @@ const Canvas = ({ page, setWallIsReady }: { page: Pages; setWallIsReady: (value:
 
     useEffect(() => {
         if (!initCameraPosition.current) {
-            if (page in coords && camera) {
-                camera.position.x = coords[page as Pages].x;
-                camera.position.y = coords[page as Pages].y;
-                camera.position.z = coords[page as Pages].z;
+            const p = page || (window.location.pathname.split('/')[2].toUpperCase() as Page);
+
+            if (p in canvasCoords && camera) {
+                camera.position.x = canvasCoords[p]?.x || 0;
+                camera.position.y = canvasCoords[p]?.y || 0;
+                camera.position.z = canvasCoords[p]?.z || z;
                 initCameraPosition.current = true;
                 cameraFixed(camera, window.innerWidth, window.innerHeight);
             }
@@ -53,8 +52,8 @@ const Canvas = ({ page, setWallIsReady }: { page: Pages; setWallIsReady: (value:
     }, [scene]);
 
     useEffect(() => {
-        if (!isFirstMount && scene && camera) {
-            smoothMovement({ camera, scene, frameEnd: 40, coords: coords[page as Pages] });
+        if (!isFirstMount && scene && camera && page) {
+            smoothMovement({ camera, scene, frameEnd: 40, coords: canvasCoords[page as Page] as Vector3 });
         }
     }, [page]);
 
@@ -76,5 +75,4 @@ const Canvas = ({ page, setWallIsReady }: { page: Pages; setWallIsReady: (value:
     return <BabylonCanvas />;
 };
 
-export type { Pages };
 export default Canvas;

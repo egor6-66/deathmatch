@@ -1,0 +1,12 @@
+@use '@/css/mixins';
+
+.modal {
+  @include mixins.box-neon;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: var(--border-radius);
+  overflow: hidden;
+}
+

@@ -1,6 +1,6 @@
 'use client';
 
-import React, { ReactNode, useCallback, useState } from 'react';
+import React, { CSSProperties, FC, useCallback, useState } from 'react';
 import { motion, MotionProps, useAnimationControls } from 'framer-motion';
 import { useRouter } from 'next/navigation';
 
@@ -8,9 +8,13 @@ interface IOnRouterProps extends MotionProps {
     href: string;
 }
 
-interface ITransitionProps extends MotionProps {
-    children: ReactNode;
-}
+const defaultStyles: CSSProperties = {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    flex: 1,
+    padding: 12,
+};
 
 function usePageTransition() {
     const router = useRouter();
@@ -20,6 +24,7 @@ function usePageTransition() {
     const onRoute = useCallback(
         async (props: IOnRouterProps) => {
             const { href, ...rest } = props;
+
             setAnimations(rest);
             await router.prefetch(href);
             await controls.start('exit');
@@ -30,11 +35,11 @@ function usePageTransition() {
         [router, controls]
     );
 
-    const Transition = useCallback((props: ITransitionProps) => {
+    const Transition: FC<MotionProps> = useCallback((props) => {
         const { children, style, ...rest } = props;
 
         return (
-            <motion.main style={{ width: '100%', height: '100%', ...style }} animate={controls} {...rest} {...animations}>
+            <motion.main style={{ ...defaultStyles, ...style }} animate={controls} {...rest} {...animations}>
                 {children}
             </motion.main>
         );

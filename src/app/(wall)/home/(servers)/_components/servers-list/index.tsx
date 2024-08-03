@@ -1,11 +1,9 @@
-import React from 'react';
-
 import { GameServer } from '@/shared/interfaces';
 
 import styles from './styles.module.scss';
 
 interface IProps {
-    servers?: GameServer.IGameServer[];
+    servers?: GameServer.WithOutFields<'users'>[];
     handleServerClick: (id: number) => void;
 }
 

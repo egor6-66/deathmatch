@@ -6,7 +6,7 @@ import { gameServersApi } from '@/shared/gql';
 
 const HomeSubProvider = ({ children }: { children: ReactNode }) => {
     useEffect(() => {
-        gameServersApi.allServers().sub();
+        gameServersApi.allServers().subscribe();
     }, []);
 
     return children;

@@ -1,59 +1,73 @@
-import { gql, useLazyQuery, useMutation, useQuery } from '@apollo/client';
+import { FetchResult, gql, useLazyQuery, useMutation, useQuery } from '@apollo/client';
 
-import { useApollo } from '@/shared/hooks';
+import { client } from '@/providers/apollo';
 import { GameServer } from '@/shared/interfaces';
 
-const serverFields = `id, name, private, url, usersCount  `;
+const serverFields = `id, name, private, usersCount  `;
 const ownerFields = `owner { id, nickname } `;
-
-const { queryWithSub } = useApollo;
+const usersFields = `users { id, nickname } `;
 
 const createServer = () => {
-    const [mutation] = useMutation<{ newServer: GameServer.IGameServer }>(
-        gql`mutation newServer($password: String!, $name: String!) {newServer(data: { password: $password, name: $name }) {${serverFields + ownerFields}}}`
+    return useMutation<{ newServer: GameServer.WithOutFields<'users' | 'owner'> }, { password: string; name: string }>(
+        gql`mutation newServer($password: String!, $name: String!) {newServer(data: { password: $password, name: $name }) {${serverFields}}}`
     );
-
-    return async (variables: { password: string; name: string }) => {
-        return await mutation({ variables });
-    };
 };
 
 const joinServer = () => {
-    const [mutation] = useMutation<{ newServer: GameServer.IGameServer }>(
+    return useMutation<{ joinServer: boolean }, { id: number }>(
         gql`
             mutation joinServer($id: Int!) {
                 joinServer(id: $id)
             }
         `
     );
-
-    return async (variables: { id: number }) => {
-        return await mutation({ variables });
-    };
 };
 
-const getViewerServers = () => {
-    return useQuery<{ viewerServers: GameServer.IGameServer[] }>(
+const leaveServer = () => {
+    return useMutation<{ leaveServer: boolean }, { id: number }>(
         gql`
-            query viewerServers {
-                viewerServers {
-                    ${serverFields}
-                }
+            mutation leaveServer($id: Int!) {
+                leaveServer(id: $id)
             }
         `
     );
 };
 
+const getViewerServers = () => {
+    return useQuery<{ viewerServers: GameServer.WithOutFields<'users'>[] }>(gql`query viewerServers {viewerServers { ${serverFields}} }`);
+};
+
 const allServers = () => {
-    return queryWithSub<{ allServers: GameServer.IGameServer[] }, GameServer.IGameServer>({
-        queryName: 'allServers',
-        subName: 'newServer',
-        fields: serverFields + ownerFields,
-    });
+    const fields = serverFields + ownerFields;
+    const queryTemplate = gql`query allServers {allServers {${fields}}}`;
+
+    const query = () => useQuery<{ allServers: GameServer.WithOutFields<'users'>[] }>(queryTemplate);
+
+    const subscribe = (cb?: (value?: GameServer.WithOutFields<'users'>) => void) => {
+        client.subscribe({ query: gql`subscription newServer {newServer {${fields}}}` }).subscribe({
+            next(value: FetchResult<{ newServer: GameServer.WithOutFields<'users'> }>) {
+                const data = client.readQuery({ query: queryTemplate });
+                data && client.writeQuery({ query: queryTemplate, data: { allServers: [...data.allServers, value.data?.newServer] } });
+                cb && cb(value.data?.newServer);
+            },
+        });
+    };
+
+    return { query, subscribe };
 };
 
-const getServer = () => {
-    return useLazyQuery<{ server: GameServer.IGameServer }>(gql`query server($id: Int!) {server(id: $id) {${serverFields + ownerFields}}}`)[0];
+const server = () => {
+    const fields = serverFields + ownerFields + usersFields;
+    const queryTemplate = gql`query server($id: Int!) {server(id: $id) {${fields}}}`;
+
+    const lazyQuery = useLazyQuery<{ server: GameServer.IGameServer }, { id: number }>(queryTemplate);
+    const query = (id: number) => useQuery<{ server: GameServer.IGameServer }>(queryTemplate, { variables: { id } });
+
+    const subscribe = () => {
+        client.subscribe({ query: gql`subscription updateServer {updateServer {${fields}}}` }).subscribe({});
+    };
+
+    return { lazyQuery, subscribe, query };
 };
 
-export { allServers, createServer, getServer, getViewerServers, joinServer };
+export { allServers, createServer, getViewerServers, joinServer, leaveServer, server };

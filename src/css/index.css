@@ -3,7 +3,7 @@
 @import url("@/css/vars.css");
 
 html {
-    height: 100vh;
+    height: 100%;
     width: 100%;
     overflow: hidden;
     font-family: inter, sans-serif;

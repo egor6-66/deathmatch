@@ -1,12 +1,13 @@
 'use client';
 
-import { ServersList } from '@/shared/components';
 import { GameServer } from '@/shared/interfaces';
+
+import { ServersList } from '../_components';
 
 import styles from './styles.module.scss';
 
 interface IProps {
-    servers?: GameServer.IGameServer[];
+    servers?: GameServer.WithOutFields<'users'>[];
     handleServerClick: (id: number) => void;
 }
 

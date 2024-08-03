@@ -4,7 +4,7 @@ import {BundleAnalyzerPlugin} from 'webpack-bundle-analyzer'
 
 const nextConfig = {
   typescript: {
-    ignoreBuildErrors: true,
+    // ignoreBuildErrors: true,
 
   },
   reactStrictMode: false,

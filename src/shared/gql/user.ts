@@ -7,6 +7,7 @@ const getViewer = () => {
         gql`
             query viewer {
                 viewer {
+                    id
                     nickname
                     clientApp {
                         theme
