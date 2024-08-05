@@ -10,6 +10,7 @@ async function addGun(scene: Scene, camera: Camera) {
 
     const { meshes, animationGroups } = await SceneLoader.ImportMeshAsync('', '/models/', 'test.glb', scene);
     const g = meshes[0];
+
     animationGroups[0].stop();
     animationGroups[9].start();
     // g.renderingGroupId = 1;

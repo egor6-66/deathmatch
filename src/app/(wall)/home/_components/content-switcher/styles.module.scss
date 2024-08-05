@@ -1,0 +1,48 @@
+@use '@/css/mixins';
+@use '@/css/media';
+
+.contentSwitcher {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.box-max-size(1800px, 1800px);
+  @include mixins.flex;
+  @include mixins.box-neon;
+  @include media.width-to(lg) {
+    @include mixins.flex-column();
+  }
+min-height: 100%;
+
+
+  .nav {
+    @include mixins.box-size(300px, 100%);
+    @include mixins.flex-column(flex-end, flex-start, 12px);
+    @include media.width-to(lg) {
+      @include mixins.box-size(100%, 60px);
+      @include mixins.flex(flex-start, center, 22px);
+      padding: 0 22px;
+    }
+    @include media.height-to(sm) {
+      @include mixins.flex-column(flex-start, flex-start, 12px);
+      padding: 12px 22px;
+    }
+    overflow: auto;
+    padding: 44px 22px;
+
+  }
+
+  .border {
+    @include mixins.border-neon;
+    @include media.width-to(lg) {
+      @include mixins.box-size(100%, 0);
+    }
+    height: 100%;
+  }
+
+  .children {
+    @include media.width-to(lg) {
+      @include mixins.box-size(100%, auto);
+    }
+    overflow: hidden;
+    flex: 1;
+    height: 100%;
+  }
+}

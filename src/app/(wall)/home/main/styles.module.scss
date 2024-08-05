@@ -1,0 +1,12 @@
+@use '@/css/mixins';
+
+.menuPage {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex(center, center);
+
+  .menu{
+    @include mixins.flex-column(center, center);
+    @include mixins.box-size(40%, 40%);
+    @include mixins.box-neon;
+  }
+}

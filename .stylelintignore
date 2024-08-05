@@ -5,3 +5,5 @@
 *.md
 *.svg
 /node_modules
+/node_modules
+/src/css/media.scss

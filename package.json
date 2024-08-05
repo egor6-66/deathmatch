@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
+    "start": "next start",
     "build": "next build",
     "bundle-analyze": "cross-env ANALYZE=true next build",
     "lint": "next lint",
@@ -13,14 +14,17 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "@apollo/client": "^3.11.1",
     "@babylonjs/core": "^7.15.1",
     "@babylonjs/gui": "^7.15.2",
     "@babylonjs/loaders": "^7.15.1",
     "ammojs-typed": "^1.0.6",
+    "apollo-link-ws": "^1.0.20",
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "cross-env": "^7.0.3",
     "framer-motion": "^11.3.2",
+    "freeice": "^2.2.2",
     "next": "14.2.5",
     "or": "^0.2.0",
     "react": "^18",
@@ -30,6 +34,7 @@
     "sass": "^1.77.8"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "^5.0.2",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
@@ -54,7 +59,7 @@
     "stylelint-config-standard": "^36.0.1",
     "stylelint-order": "^6.0.4",
     "stylelint-scss": "^6.4.1",
-    "typescript": "^5",
+    "typescript": "^5.5.4",
     "webpack-bundle-analyzer": "^4.10.2"
   }
 }

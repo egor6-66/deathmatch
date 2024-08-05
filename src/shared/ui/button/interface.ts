@@ -1,5 +1,5 @@
-import { HTMLAttributes } from 'react';
+import { ButtonHTMLAttributes } from 'react';
 
-export interface IProps extends HTMLAttributes<HTMLButtonElement> {
+export interface IProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     children: string;
 }

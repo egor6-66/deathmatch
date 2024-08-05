@@ -1,0 +1,22 @@
+@use '@/css/mixins';
+
+.createServerPage {
+  @include mixins.box-size(100%, 100%);
+  @include mixins.flex-column(space-between, center, 12px);
+  padding: 12px;
+
+  .params{
+    @include mixins.flex(center, center, 12px);
+    flex-wrap: wrap;
+    width: 100%;
+
+  }
+
+  .map{
+    @include mixins.flex(center, center);
+    border-radius: var(--border-radius);
+    flex: 1;
+    width: 100%;
+    background-color:var(--bg-dimming);
+  }
+}

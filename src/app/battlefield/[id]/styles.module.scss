@@ -1,0 +1,6 @@
+@use "@/css/mixins";
+
+.battlefieldPage {
+  @include mixins.box-size(100%, 100%);
+  background-color: #8c8c8c;
+}

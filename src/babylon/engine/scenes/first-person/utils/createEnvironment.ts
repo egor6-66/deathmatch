@@ -4,7 +4,7 @@ import '@babylonjs/loaders';
 
 async function createEnvironment(scene: Scene): Promise<Array<AbstractMesh>> {
     try {
-        const { meshes } = await SceneLoader.ImportMeshAsync('', './environment/', 'cs_italy_winter.glb', scene);
+        const { meshes } = await SceneLoader.ImportMeshAsync('', '/environment/', 'cs_italy_winter.glb', scene);
         meshes.forEach((mesh) => {
             mesh.checkCollisions = true;
         });
