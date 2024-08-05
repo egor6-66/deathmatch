@@ -70,4 +70,18 @@ const server = () => {
     return { lazyQuery, subscribe, query };
 };
 
-export { allServers, createServer, getViewerServers, joinServer, leaveServer, server };
+const webRTC = () => {
+    const peerField = `peerId, createOffer`;
+
+    const addPeer = (cb: (peerId: number, createOffer: boolean) => void) => {
+        client.subscribe({ query: gql`subscription { newPeer {${peerField}} }` }).subscribe({
+            next(value) {
+                cb(value.data.newPeer.peerId, value.data.newPeer.createOffer);
+            },
+        });
+    };
+
+    return { addPeer };
+};
+
+export { allServers, createServer, getViewerServers, joinServer, leaveServer, server, webRTC };

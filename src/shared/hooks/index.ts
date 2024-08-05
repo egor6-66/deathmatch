@@ -7,7 +7,6 @@ import usePrevious from './usePreviusValue';
 import useStateWithCallback from './useStateWithCallback';
 import useTimeoutFn from './useTimeoutFn';
 import useUpdateEffect from './useUpdateEffect';
-import useWebRTC from './useWebRTC';
 
 export {
     configMediaQuery,
@@ -20,6 +19,5 @@ export {
     useStateWithCallback,
     useTimeoutFn,
     useUpdateEffect,
-    useWebRTC,
     useWindowSizeObserver,
 };

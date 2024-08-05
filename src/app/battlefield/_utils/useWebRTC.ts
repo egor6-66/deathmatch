@@ -1,34 +1,23 @@
-import { useCallback, useEffect, useRef } from 'react';
-
-// import freeice from 'freeice';
-import useStateWithCallback from '@/shared/hooks/useStateWithCallback';
-import { IUser } from '@/shared/interfaces/user';
-
-interface IProps {
-    viewer?: IUser;
-    users?: IUser[];
-}
-
-function useWebRTC(props: IProps) {
-    const { viewer, users } = props;
-
-    const [clients, updateClients] = useStateWithCallback<number[]>([]);
-
+function useWebRTC() {
+    // const { addPeer } = gameServersApi.webRTC();
+    // const [clients, updateClients] = useStateWithCallback<number[]>([]);
     // const peerConnections = useRef<Record<number, RTCPeerConnection>>({});
     // const localMediaStream = useRef<MediaStream | null>(null);
-
-    const peerMediaElements = useRef<Record<string, HTMLVideoElement>>({});
-
-    const provideMediaRef = useCallback((id: number, node: HTMLVideoElement) => {
-        peerMediaElements.current[id] = node;
-    }, []);
-
+    // const peerMediaElements = useRef<Record<string, HTMLVideoElement>>({});
+    //
+    // const provideMediaRef = useCallback((id: number, node: HTMLVideoElement) => {
+    //     peerMediaElements.current[id] = node;
+    // }, []);
+    // useEffect(() => {
+    //     addPeer((peerId, createOffer) => {
+    //
+    //     });
+    // }, []);
     // const addNewClient = useCallback((newClient: any, cb: any) => {
     //     // if (!clients.includes(newClient)) {
     //     //     updateClients((list) => [...list, newClient], cb);
     //     // }
     // }, []);
-
     // useEffect(() => {
     //     if (users?.length) {
     //         users.forEach((user) => {
@@ -96,8 +85,7 @@ function useWebRTC(props: IProps) {
     //         localMediaStream.current?.getTracks().forEach((track) => track.stop());
     //     };
     // }, [viewer]);
-
-    return { clients, provideMediaRef };
+    // return { clients, provideMediaRef };
 }
 
 export default useWebRTC;
